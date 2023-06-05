@@ -3,7 +3,7 @@ import {
     getAuth, createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     GoogleAuthProvider, signInWithPopup,
-    signOut, onAuthStateChanged, updateProfile
+    signOut, onAuthStateChanged, GithubAuthProvider
 } from 'firebase/auth';
 import app from '../../Firebase/firebase.config';
 
@@ -31,14 +31,21 @@ const AuthProvider = ({ children }) => {
 
 
     //================================
-    // update user 
+    // git hub login
     //================================
+    const githubProvider = new GithubAuthProvider();
+    const SignInGithub = () => {
+        setLoading(true);
+        signInWithPopup(auth, githubProvider)
+            .then((result) => {
+                const loggedGithubUser = result.user;
+                setUser(loggedGithubUser);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
-    // const updateUserProfile = (name, photo) => {
-    //     return updateProfile(auth.currentUser, {
-    //         displayName: name, photoURL: photo
-    //     });
-    // }
 
 
     //==================================
@@ -60,8 +67,8 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         signInWithPopup(auth, GoogleProvider)
             .then((result) => {
-                const LoggedGoogleUser = result.user;                
-               
+                const LoggedGoogleUser = result.user;
+
             })
             .catch((error) => {
                 // console.log(error);
@@ -99,10 +106,10 @@ const AuthProvider = ({ children }) => {
         CreateNewUser,
         UserLogin,
         UserGoogleLogin,
-        UserLogOut,
         Loading,
         User,
-        // updateUserProfile
+        UserLogOut,
+        SignInGithub,
     };
 
     return (

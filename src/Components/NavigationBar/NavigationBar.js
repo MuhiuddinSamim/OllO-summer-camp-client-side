@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider/AuthProvider/AuthProvider';
 
 const NavigationBar = () => {
+    const { User, UserLogOut, } = useContext(AuthContext);
+
+    const handelLogOut = () => {
+        UserLogOut()
+            .then(() => {
+
+            })
+            .catch(error => console.error(error))
+    }
 
     const WebsiteName = <>
         <Link to='/'>common</Link>
@@ -35,7 +45,12 @@ const NavigationBar = () => {
     const Navber_Profile_menu = <>
         <li><Link>joan@gmail.com </Link></li>
         <li className='mt-1'>User name</li>
-        <li><Link to='/'>Logout</Link></li>
+
+        {User?.email ? <>
+            <li><button onClick={handelLogOut}>Log Out</button></li>
+        </>
+            : <li><Link to='/login'>login</Link></li>
+        }
 
     </>
 

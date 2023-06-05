@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from 'react-icons/ai';
 import { BsFacebook } from 'react-icons/bs';
@@ -13,19 +13,42 @@ import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
 
-    const { UserLogin, UserGoogleLogin } = useContext(AuthContext);
+    const { UserLogin, UserGoogleLogin, SignInGithub } = useContext(AuthContext);
     const [error, setError] = useState();
-    // const Navigate = useNavigate();
-    // const Location = useLocation();
+    const Navigate = useNavigate();
+    const Location = useLocation();
     const [Success, setSuccess] = useState();
-    // const from = Location.state?.from?.pathname || "/";
+    const from = Location.state?.from?.pathname || "/";
+
+
+
+    //=============================
+    //google sing in github
+    //=============================
+    const handleGithubSignIn = () => {
+        SignInGithub();
+        Navigate(from, { replace: true });
+    };
+    
+
+
+
+
+    //=================================
+    // google icon click and login
+    //=================================
 
 
     const UserHandleGoogleLogin = () => {
         UserGoogleLogin();
-        // Navigate(from, { replace: true });
-        // console.log(UserGoogleLogin);
+        Navigate(from, { replace: true });
+        console.log(UserGoogleLogin);
     };
+
+
+    //=====================================
+    // email and password types for login
+    //======================================
 
 
     const HandleUserLogin = (event) => {
@@ -45,7 +68,7 @@ const Login = () => {
                     text: "Login successful",
 
                 }));
-                // Navigate(from, { replace: true });
+                Navigate(from, { replace: true });
             })
             .catch((error) => {
                 setError(Swal.fire({
@@ -60,11 +83,11 @@ const Login = () => {
 
     return (
 
-        <> 
-        <Helmet>
-            <title>Login || common </title>
-            <link rel="canonical" href="https://www.tacobell.com/" />
-        </Helmet>
+        <>
+            <Helmet>
+                <title>Login || common </title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
 
             <div>
 
@@ -122,8 +145,14 @@ const Login = () => {
                                             className="btn btn-circle btn-lg  btn-outline btn-secondary"
                                         > <FcGoogle />  </button>
 
-                                        <button className="btn btn-circle btn-lg  btn-outline btn-secondary"
-                                        > <AiFillGithub />  </button>
+                                       
+                                        <button                                        
+                                        onClick={handleGithubSignIn}
+                                         className="btn btn-circle btn-lg  btn-outline btn-secondary"
+                                        > <AiFillGithub/>  </button>
+
+
+
 
                                         <button className="btn btn-circle btn-lg  btn-outline btn-secondary"
                                         > <BsFacebook />  </button>
