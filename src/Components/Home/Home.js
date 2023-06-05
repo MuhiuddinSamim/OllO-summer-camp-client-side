@@ -9,6 +9,9 @@ const Home = () => {
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
 
+
+            
+
             <h1>this is home page</h1>
         </div>
     );
