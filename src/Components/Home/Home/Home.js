@@ -1,7 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import SliderSection from '../SliderSection/SliderSection';
-import PopularSection from '../PopularSection/PopularSection';
+import PopularClasses from '../PopularClasses/PopularClasses';
+import PopularInstructors from '../PopularInstructors/PopularInstructors';
 
 const Home = () => {
     return (
@@ -11,7 +12,8 @@ const Home = () => {
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
             <SliderSection></SliderSection>
-            <PopularSection></PopularSection>
+            <PopularClasses></PopularClasses>
+            <PopularInstructors></PopularInstructors>
         </div>
     );
 };
