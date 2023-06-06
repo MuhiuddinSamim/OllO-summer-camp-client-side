@@ -1,5 +1,4 @@
 import React from 'react';
-import Home from './Components/Home/Home';
 import NavigationBar from './Components/NavigationBar/NavigationBar';
 import { Outlet } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';

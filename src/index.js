@@ -9,12 +9,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from './App';
-import Home from './Components/Home/Home';
+
 import Login from './Components/RegistrationPage/Login/Login';
 import SignUp from './Components/RegistrationPage/SignUp/SignUp';
 import AuthProvider from './Components/AuthProvider/AuthProvider/AuthProvider';
 import Blog from './Components/Blog/Blog';
 import PrivateRoutes from './Components/AuthProvider/PrivateRoutes/PrivateRoutes';
+import Home from './Components/Home/Home/Home';
 
 
 const router = createBrowserRouter([
