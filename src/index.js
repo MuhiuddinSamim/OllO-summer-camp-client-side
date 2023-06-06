@@ -17,6 +17,7 @@ import Blog from './Components/Blog/Blog';
 import PrivateRoutes from './Components/AuthProvider/PrivateRoutes/PrivateRoutes';
 import Home from './Components/Home/Home/Home';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
+import InstructorAdd from './Components/InstructorPage/InstructorAdd/InstructorAdd';
 
 
 const router = createBrowserRouter([
@@ -49,8 +50,8 @@ const router = createBrowserRouter([
 
 
       {
-        path: '',
-        element: '',
+        path: 'add',
+        element: <InstructorAdd/>
       },
 
 

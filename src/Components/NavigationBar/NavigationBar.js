@@ -39,6 +39,7 @@ const NavigationBar = () => {
     </>
 
     const Navber_Profile_image = (
+
         <>
             {User ? (
                 <img src={User.photoURL} alt="" />
@@ -52,6 +53,8 @@ const NavigationBar = () => {
 
 
 
+
+
     const Navber_Profile_menu = <>
         {User && <li><Link>{User?.displayName}</Link></li>}
         {User && <li> <Link>{User.email}</Link></li>}
@@ -59,7 +62,8 @@ const NavigationBar = () => {
 
         {User ? (
             <>
-                <li><button onClick={handelLogOut}>Log Out</button></li>
+
+                <li> <Link onClick={handelLogOut} to="/login">Log Out</Link></li>
             </>
 
         ) : (

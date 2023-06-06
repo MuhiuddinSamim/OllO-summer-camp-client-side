@@ -7,7 +7,7 @@ import NoticeSection from '../NoticeSection/NoticeSection';
 
 const Home = () => {
     return (
-        <div>
+        <div className='mt-12'>
             <Helmet>
                 <title>common || Home</title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
