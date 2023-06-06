@@ -2,9 +2,7 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 
 
-
-const InstructorAdd = () => {
-
+const ClassAdd = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
     return (
@@ -21,7 +19,7 @@ const InstructorAdd = () => {
                                     <label className="label">
                                         <span className="label-text">Name </span>
                                     </label>
-                                    <input                                        
+                                    <input
                                         type="name"
                                         placeholder="name"
                                         {...register("name", { required: true })}
@@ -137,13 +135,4 @@ const InstructorAdd = () => {
     );
 };
 
-export default InstructorAdd;
-
-
-
-/*
-name
-img
-email 
-see class
-*/
+export default ClassAdd;

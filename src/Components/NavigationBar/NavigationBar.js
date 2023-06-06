@@ -21,19 +21,8 @@ const NavigationBar = () => {
 
     const Navber_Menu = <>
         <li><Link to='/'>Home</Link></li>
-        <li tabIndex={0}>
-            <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                    <li><Link>Submenu 1</Link></li>
-                    <li><Link>Submenu 2</Link></li>
-                </ul>
-            </details>
-        </li>
-
-        <li><Link to='/'>item</Link></li>
-        <li><Link to='/'>item</Link></li>
-        <li><Link to='/'>item</Link></li>
+        <li><Link to='/class'>Class</Link></li>
+        <li><Link to='/instructor'>Instructor</Link></li>
         <li><Link to='/blog'>blog</Link></li>
 
     </>
@@ -56,9 +45,6 @@ const NavigationBar = () => {
 
 
     const Navber_Profile_menu = <>
-        {User && <li><Link>{User?.displayName}</Link></li>}
-        {User && <li> <Link>{User.email}</Link></li>}
-
 
         {User ? (
             <>
@@ -70,6 +56,13 @@ const NavigationBar = () => {
             <li> <Link to="/login">Log in</Link></li>
         )
         }
+
+        {User && <li className='text-black font-bold text-2xl'> <Link to='DashBoard'>DashBoard</Link></li>}
+        {User && <li><Link>{User?.displayName}</Link></li>}
+        {User && <li> <Link>{User.email}</Link></li>}
+
+
+
 
 
     </>

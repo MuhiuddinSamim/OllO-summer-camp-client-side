@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import {  HelmetProvider } from 'react-helmet-async';
 
 import {
   createBrowserRouter,
@@ -18,12 +18,15 @@ import PrivateRoutes from './Components/AuthProvider/PrivateRoutes/PrivateRoutes
 import Home from './Components/Home/Home/Home';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import InstructorAdd from './Components/InstructorPage/InstructorAdd/InstructorAdd';
+import InstructorPage from './Components/InstructorPage/InstructorPage/InstructorPage';
+import Class from './Components/Class/Class/Class';
+import DashBoard from './Components/DashBoard/DashBoard/DashBoard';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    errorElement:<ErrorPage/>,
+    errorElement: <ErrorPage />,
     element: <App />,
     children: [
       {
@@ -45,28 +48,32 @@ const router = createBrowserRouter([
 
       {
         path: 'blog',
-        element: <PrivateRoutes><Blog/></PrivateRoutes>
+        element: <PrivateRoutes><Blog /></PrivateRoutes>
       },
 
 
       {
         path: 'add',
-        element: <InstructorAdd/>
+        element: <InstructorAdd />
       },
 
 
       {
-        path: '',
-        element: '',
+        path: 'instructor',
+        element: <InstructorPage></InstructorPage>
       },
 
 
       {
-        path: '',
-        element: '',
+        path: 'class',
+        element: <Class></Class>
       },
 
 
+      {
+        path: 'DashBoard',
+        element: <DashBoard></DashBoard>
+      },
       {
         path: '',
         element: '',
