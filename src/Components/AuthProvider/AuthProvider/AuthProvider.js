@@ -3,7 +3,7 @@ import {
     getAuth, createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     GoogleAuthProvider, signInWithPopup,
-    signOut, onAuthStateChanged, GithubAuthProvider
+    signOut, onAuthStateChanged, GithubAuthProvider,FacebookAuthProvider 
 } from 'firebase/auth';
 import app from '../../Firebase/firebase.config';
 
@@ -30,33 +30,6 @@ const AuthProvider = ({ children }) => {
     };
 
 
-    //================================
-    // git hub login
-    //================================
-    const githubProvider = new GithubAuthProvider();
-    const SignInGithub = () => {
-        setLoading(true);
-        signInWithPopup(auth, githubProvider)
-            .then((result) => {
-                const loggedGithubUser = result.user;
-                setUser(loggedGithubUser);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
-
-
-    //==================================
-    // user email and password login function
-    //==================================
-
-    const UserLogin = (email, password) => {
-        setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
-    };
-
 
     //==================================
     //User login by Google account
@@ -74,6 +47,37 @@ const AuthProvider = ({ children }) => {
                 // console.log(error);
             });
     };
+
+
+
+
+    //================================
+    // git hub login
+    //================================
+    const githubProvider = new GithubAuthProvider();
+    const SignInGithub = () => {
+        setLoading(true);
+        signInWithPopup(auth, githubProvider)
+            .then((result) => {
+                const loggedGithubUser = result.user;
+                setUser(loggedGithubUser);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+
+ //==================================
+    // user email and password login function
+    //==================================
+
+    const UserLogin = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    };
+
+
 
 
 

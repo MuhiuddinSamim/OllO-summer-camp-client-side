@@ -21,7 +21,6 @@ const Login = () => {
     const from = Location.state?.from?.pathname || "/";
 
 
-
     //=============================
     //google sing in github
     //=============================
@@ -29,9 +28,6 @@ const Login = () => {
         SignInGithub();
         Navigate(from, { replace: true });
     };
-    
-
-
 
 
     //=================================
@@ -44,6 +40,7 @@ const Login = () => {
         Navigate(from, { replace: true });
         console.log(UserGoogleLogin);
     };
+
 
 
     //=====================================
@@ -145,20 +142,12 @@ const Login = () => {
                                             className="btn btn-circle btn-lg  btn-outline btn-secondary"
                                         > <FcGoogle />  </button>
 
-                                       
-                                        <button                                        
-                                        onClick={handleGithubSignIn}
-                                         className="btn btn-circle btn-lg  btn-outline btn-secondary"
-                                        > <AiFillGithub/>  </button>
 
-
-
-
-                                        <button className="btn btn-circle btn-lg  btn-outline btn-secondary"
-                                        > <BsFacebook />  </button>
-
-                                        <button className="btn btn-circle btn-lg  btn-outline btn-secondary"
-                                        > <FaTwitter />  </button>                                </div>
+                                        <button
+                                            onClick={handleGithubSignIn}
+                                            className="btn btn-circle btn-lg  btn-outline btn-secondary"
+                                        > <AiFillGithub />  </button>
+                                    </div>
 
                                     <Link to="/signup"
                                         className=" mt-5  mx-auto label-text-alt link link-hover text-blue-500 text-lg"
