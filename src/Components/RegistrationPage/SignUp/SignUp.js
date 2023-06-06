@@ -2,12 +2,12 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
-import { updateProfile } from 'firebase/auth';
+import { updateCurrentUser, updateProfile } from 'firebase/auth';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 
 const SignUp = () => {
-    const { CreateNewUser } = useContext(AuthContext);
+    const { CreateNewUser, NewUserProfileUpdate } = useContext(AuthContext);
     const [error, setError] = useState();
     const [Success, setSuccess] = useState();
     const [password, setPassword] = useState('');
@@ -22,26 +22,45 @@ const SignUp = () => {
 
 
         if (data.password === data.confirmPassword) {
-
             CreateNewUser(data.email, data.password)
                 .then((result) => {
-                    const createdUser = result.user;
+                    const createdUser = result.user;                   
                     console.log(createdUser);
-                    reset();
-                    setSuccess(Swal.fire({
-                        icon: "success",
-                        title: "Success",
-                        text: "Registered successfully",
-                    }));
+                  
+                    NewUserProfileUpdate(data.name, data.photoURL)
+                        .then(() => {
+                            const sendUserData = { name: data.name, email: data.email };
 
-                    navigate('/');
+                            fetch('http://localhost:5000/users', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(sendUserData),
+                            })
+                                .then((response) => response.json())
+                                .then((data) => {
+                                    if (data.insertedId) {
+                                        reset();
+                                        setSuccess(
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Success',
+                                                text: 'Registered successfully',
+                                            })
+                                        );
+                                        navigate('/');
+                                    }
+                                })
 
 
-                    // Update user profile with name and photo URL
-                    updateProfile(createdUser, {
-                        displayName: data.name,
-                        photoURL: data.photoUrl,
-                    });
+
+
+                        })
+
+
+
+
                 })
                 .catch((error) => {
                     setError(Swal.fire({

@@ -7,128 +7,57 @@ const ClassAdd = () => {
     const onSubmit = data => console.log(data);
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="hero min-h-screen bg-base-200">
-                    <div className="hero-content flex-col w-full">
-                        <div className="text-center">
-                            <h1 className="text-xl font-bold mb-5">Add Instructor </h1>
-                        </div>
-                        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mt-5">
-                            <div className="card-body">
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Name </span>
-                                    </label>
-                                    <input
-                                        type="name"
-                                        placeholder="name"
-                                        {...register("name", { required: true })}
-                                        className="input input-bordered"
-                                        name="name" />
-                                    {errors.name && <span className="text-red-800">Name field is required</span>}
-                                </div>
+            <form data-aos="fade-up-right" onSubmit={handleSubmit(onSubmit)}>
+                <h1 className=' text-center font-extrabold text-3xl mb-5'>Class add</h1>
+                <div className="divider"></div>
 
+                <div className="px-24">
 
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text"> email</span>
-                                    </label>
-                                    <input
-                                        required
-                                        type="email"
-                                        {...register("email", { required: true })}
-                                        placeholder="email"
-                                        className="input input-bordered"
-                                        name="email"
-                                    />
-                                </div>
-
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">image </span>
-                                    </label>
-                                    <input
-                                        required
-                                        type="text"
-                                        {...register("image", { required: true })}
-                                        placeholder="image"
-                                        className="input input-bordered"
-                                        name="image"
-                                    />
-                                </div>
-
-
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">image </span>
-                                    </label>
-                                    <input
-                                        required
-                                        type="text"
-                                        {...register("image", { required: true })}
-                                        placeholder="image"
-                                        className="input input-bordered"
-                                        name="image"
-                                    />
-                                </div>
-
-
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">image </span>
-                                    </label>
-                                    <input
-                                        required
-                                        type="text"
-                                        {...register("image", { required: true })}
-                                        placeholder="image"
-                                        className="input input-bordered"
-                                        name="image"
-                                    />
-                                </div>
-
-
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">image </span>
-                                    </label>
-                                    <input
-                                        required
-                                        type="text"
-                                        {...register("image", { required: true })}
-                                        placeholder="image"
-                                        className="input input-bordered"
-                                        name="image"
-                                    />
-                                </div>
-
-
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">image </span>
-                                    </label>
-                                    <input
-                                        required
-                                        type="text"
-                                        {...register("image", { required: true })}
-                                        placeholder="image"
-                                        className="input input-bordered"
-                                        name="image"
-                                    />
-                                </div>
-
-
-
-                                <div className="form-control mt-6 mb-5">
-                                    <button type="submit" className="btn btn-outline btn-secondary">
-                                        add
-                                    </button>
-                                </div>
-
-
-                            </div>
-                        </div>
+                    <div>
+                        <label className="label">
+                            <span className="text-center">Photo Url</span>
+                        </label>
+                        <input
+                            type="text"
+                            {...register('photoUrl')}
+                            placeholder="Enter your Photo Url here"
+                            className="input input-bordered input-error w-full mb-2"
+                            required
+                        />
                     </div>
+
+                    <div>
+                        <label className="label">
+                            <span className="text-center">Toy Name</span>
+                        </label>
+                        <input
+                            type="text"
+                            {...register('ToyName')}
+                            placeholder="Enter your Toy name"
+                            className="input input-bordered input-error w-full mb-2"
+                            required
+                        />
+                    </div>
+
+
+
+                    <div>
+                        <label className="label">
+                            <span className="text-center">Description Product</span>
+                        </label>
+                        <textarea
+                            {...register('detailsPage')}
+                            placeholder="Enter your toy details"
+                            rows={5}
+                            cols={50}
+                            required
+                            className="input input-bordered input-error w-full h-52 mb-2 p-5"
+                        />
+                    </div>
+
+                    <button className="btn btn-outline btn-secondary" type="submit">
+                        Add Toy
+                    </button>
                 </div>
             </form>
         </div>

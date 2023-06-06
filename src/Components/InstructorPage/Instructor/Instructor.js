@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Class = () => {
+const Instructor = () => {
     return (
         <div>
             <div className='flex justify-end mb-5'>
-                <Link to='/DashBoard/classAdd'>
+                <Link to='/DashBoard/instructorAdd'>
                     <button className="btn btn-outline btn-secondary">
-                        Add A New Class
+                        Add A new Instructor
                     </button>
 
                 </Link>
@@ -67,4 +67,4 @@ const Class = () => {
     );
 };
 
-export default Class;
+export default Instructor;

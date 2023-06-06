@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {  HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from 'react-helmet-async';
 
 import {
   createBrowserRouter,
@@ -20,7 +20,11 @@ import ErrorPage from './Components/ErrorPage/ErrorPage';
 import InstructorAdd from './Components/InstructorPage/InstructorAdd/InstructorAdd';
 import InstructorPage from './Components/InstructorPage/InstructorPage/InstructorPage';
 import Class from './Components/Class/Class/Class';
-import DashBoard from './Components/DashBoard/DashBoard/DashBoard';
+import DashBoard from './Components/Layout/DashBoard/DashBoard';
+import Instructor from './Components/InstructorPage/Instructor/Instructor';
+import ClassAdd from './Components/Class/ClassAdd/ClassAdd';
+import Users from './Components/Layout/AdminDashboard/Users/Users';
+
 
 
 const router = createBrowserRouter([
@@ -52,32 +56,53 @@ const router = createBrowserRouter([
       },
 
 
-      {
-        path: 'add',
-        element: <InstructorAdd />
-      },
-
 
       {
         path: 'instructor',
         element: <InstructorPage></InstructorPage>
       },
 
+      {
+        path: '',
+        element: '',
+      },
+    ]
+  },
+
+  {
+    path: 'DashBoard',
+    errorElement: <ErrorPage />,
+    element: <PrivateRoutes><DashBoard></DashBoard></PrivateRoutes>,
+    children: [
+      {
+        path: 'instructor',
+        element: <Instructor></Instructor>
+      },
+
+      {
+        path: 'instructorAdd',
+        element: <InstructorAdd />
+      },
 
       {
         path: 'class',
         element: <Class></Class>
       },
 
+      {
+        path: 'classAdd',
+        element: <ClassAdd></ClassAdd>
+      },
 
       {
-        path: 'DashBoard',
-        element: <DashBoard></DashBoard>
+        path: 'users',
+        element: <Users></Users>
       },
-      {
-        path: '',
-        element: '',
-      },
+
+
+
+
+
     ]
   },
 ]);

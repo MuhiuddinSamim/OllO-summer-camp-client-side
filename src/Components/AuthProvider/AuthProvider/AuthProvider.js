@@ -3,7 +3,7 @@ import {
     getAuth, createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     GoogleAuthProvider, signInWithPopup,
-    signOut, onAuthStateChanged, GithubAuthProvider,FacebookAuthProvider 
+    signOut, onAuthStateChanged, GithubAuthProvider, FacebookAuthProvider, updateProfile
 } from 'firebase/auth';
 import app from '../../Firebase/firebase.config';
 
@@ -29,6 +29,13 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password);
     };
 
+
+    const NewUserProfileUpdate = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photo,
+        })
+    }
 
 
     //==================================
@@ -68,7 +75,7 @@ const AuthProvider = ({ children }) => {
     };
 
 
- //==================================
+    //==================================
     // user email and password login function
     //==================================
 
@@ -114,6 +121,7 @@ const AuthProvider = ({ children }) => {
         User,
         UserLogOut,
         SignInGithub,
+        NewUserProfileUpdate
     };
 
     return (

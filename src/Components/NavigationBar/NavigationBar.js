@@ -39,7 +39,7 @@ const NavigationBar = () => {
     );
 
 
-
+console.log(User)
 
 
 
@@ -57,9 +57,9 @@ const NavigationBar = () => {
         )
         }
 
-        {User && <li className='text-black font-bold text-2xl'> <Link to='DashBoard'>DashBoard</Link></li>}
-        {User && <li><Link>{User?.displayName}</Link></li>}
-        {User && <li> <Link>{User.email}</Link></li>}
+        {User && <li className='text-black font-bold text-2xl mt-2'> <Link to='DashBoard'>DashBoard</Link></li>}
+        {User && <li className='mt-2'>{User?.displayName}</li>}
+        {User && <li className='mt-2'> {User.email}</li>}
 
 
 
