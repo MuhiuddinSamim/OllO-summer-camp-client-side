@@ -24,7 +24,11 @@ import DashBoard from './Components/Layout/DashBoard/DashBoard';
 import Instructor from './Components/InstructorPage/Instructor/Instructor';
 import ClassAdd from './Components/Class/ClassAdd/ClassAdd';
 import Users from './Components/Layout/AdminDashboard/Users/Users';
-
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+const queryClient = new QueryClient()
 
 
 const router = createBrowserRouter([
@@ -112,7 +116,9 @@ root.render(
   <React.StrictMode>
     <HelmetProvider>
       <AuthProvider>
-        <RouterProvider router={router} />
+        <QueryClientProvider client={queryClient}>
+          <div> <RouterProvider router={router} /></div>
+        </QueryClientProvider>
       </AuthProvider>
     </HelmetProvider>
   </React.StrictMode>
