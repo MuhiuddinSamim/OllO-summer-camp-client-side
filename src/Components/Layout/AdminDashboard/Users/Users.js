@@ -21,6 +21,7 @@ const Users = () => {
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {
+                    refetch();
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
