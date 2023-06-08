@@ -20,7 +20,7 @@ const MyClass = () => {
     }, []);
     return (
         <div className="w-11/12 md:10/12 mx-auto grid sm:grid-cols-1 
-        md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10 py-3 px-3">
+        md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12 py-3 px-3">
 
             {MyClass.map((cartClass)=>
             <MyClassCart

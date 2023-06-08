@@ -20,6 +20,8 @@ const DashBoard = () => {
     const [isInstructor] = UseInstructor();
     // console.log(isInstructor)
     // 
+
+    const isStudent = true;
     // student@gmail.comA
 
     return (
@@ -39,12 +41,16 @@ const DashBoard = () => {
                             {isAdmin ? (
                                 <div>
                                     <ul>
-                                        <li><Link to='/DashBoard/instructor'>Admin</Link></li>
+                                        <h1 className='font-extrabold text-center text-3xl'>Admin</h1>
+                                        
+                                        <li><Link to='/DashBoard'>Admin Home</Link></li>
+                                        <li><Link to="/DashBoard/instructorAdmin">Instructor Home</Link></li>
                                         <li><Link to='/DashBoard/class'>Class</Link></li>
-                                        <li><Link to='/DashBoard/add'>1</Link></li>
+                                        <li><Link to='/DashBoard/add'>Total Student</Link></li>
                                         <li><Link to='/DashBoard/add'>2</Link></li>
-                                        <li><Link to='/DashBoard/add'>3</Link></li>
+                                        <li><Link to='/DashBoard/add'>Payment</Link></li>
                                         <li><Link to='/DashBoard/users'>All Users</Link></li>
+                                        <li><Link to="/">Website Home</Link></li>
                                     </ul>
                                     <div className="divider"></div>
                                 </div>
@@ -53,19 +59,31 @@ const DashBoard = () => {
                             {isInstructor ? (
                                 <div>
                                     <ul>
-                                        <li><Link to="/DashBoard/instructorAdmin">Instructor Admin</Link></li>
-                                        <li><Link to="/DashBoard/class">Class</Link></li>
+                                        <h1 className='font-extrabold text-center text-3xl'>Instructor</h1>
+                                        
+                                        <li><Link to="/DashBoard/class">Instructor Home</Link></li>
+                                        <li><Link to="/DashBoard/class">Instructor Class</Link></li>
+                                        <li><Link to='/DashBoard/add'>Total Student</Link></li>
+                                        <li><Link to="/">Website Home</Link></li>
                                     </ul>
                                     <div className="divider"></div>
                                 </div>
                             ) : null}
 
 
+                            {isStudent ? (
+                                <div>
+                                    <ul>
+                                        <h1 className='font-extrabold text-center text-3xl'>Student</h1>
+                                        <li><Link to="/DashBoard/instructorAdmin">Student Home</Link></li>
+                                        <li><Link to="/DashBoard/class">My Class</Link></li>
+                                        <li><Link to='/DashBoard/add'>Payment History</Link></li>
+                                        <li><Link to="/">Website Home</Link></li>
+                                    </ul>
+                                    <div className="divider"></div>
+                                </div>
+                            ) : null}
 
-                            <ul>
-                                <li><Link to="/">Home</Link></li>
-                                <li><Link to="/myClass">My Classes</Link></li>
-                            </ul>
 
                         </div>
 
