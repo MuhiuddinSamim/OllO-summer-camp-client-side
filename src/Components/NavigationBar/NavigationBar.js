@@ -22,7 +22,7 @@ const NavigationBar = () => {
     const Navber_Menu = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/myclass'>My Class</Link></li>
-        <li><Link to='/instructor'>Instructor</Link></li>
+        <li><Link to='/Instructor'>Instructor</Link></li>
         <li><Link to='/blog'>blog</Link></li>
 
     </>

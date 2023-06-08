@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InstructorPageDetails = () => {
+const InstructorPageDetails = ({Instructor}) => {
     return (
         <div>
             
