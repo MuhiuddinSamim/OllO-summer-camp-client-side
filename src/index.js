@@ -28,6 +28,8 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import ClassUpdate from './Components/Class/ClassUpdate/ClassUpdate';
+import MyClass from './Components/Class/MyClass/MyClass';
 const queryClient = new QueryClient()
 
 
@@ -67,8 +69,8 @@ const router = createBrowserRouter([
       },
 
       {
-        path: '',
-        element: '',
+        path: 'myclass',
+        element: <MyClass></MyClass>
       },
     ]
   },
@@ -96,6 +98,11 @@ const router = createBrowserRouter([
       {
         path: 'classAdd',
         element: <ClassAdd></ClassAdd>
+      },
+
+      {
+        path: 'classUpdate/:id',
+        element: <ClassUpdate></ClassUpdate>,       
       },
 
       {

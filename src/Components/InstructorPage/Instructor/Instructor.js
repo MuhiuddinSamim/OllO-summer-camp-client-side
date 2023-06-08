@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Instructor = () => {
     return (
-        <div>
+        <div className='w-full'>
             <div className='flex justify-end mb-5'>
                 <Link to='/DashBoard/instructorAdd'>
                     <button className="btn btn-outline btn-secondary">

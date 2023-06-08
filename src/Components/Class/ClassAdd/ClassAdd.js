@@ -51,7 +51,7 @@ const ClassAdd = () => {
 
 
     return (
-        <div>
+        <div className='w-full mb-5'>
             <form data-aos="fade-up-right" onSubmit={handleSubmit(onSubmit)}>
                 <h1 className=' text-center font-extrabold text-3xl mb-5'>Instructor add</h1>
                 <div className="divider"></div>

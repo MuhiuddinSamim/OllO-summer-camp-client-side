@@ -127,10 +127,9 @@ const Users = () => {
 
 
     return (
-        <div>
+        <div className='w-full'>
             <div className="overflow-x-auto">
-                <table className="table">
-                    {/* head */}
+                <table className="table">                
                     <thead>
                         <tr>
                             <th>#</th>

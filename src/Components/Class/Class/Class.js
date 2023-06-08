@@ -14,10 +14,10 @@ const Class = () => {
             .then(response => {
                 const ClassData = response.data;
                 setNewClass(ClassData);
-                console.log(ClassData);
+                // console.log(ClassData);
             })
             .catch(error => {
-                console.error('Error:', error);
+                // console.error('Error:', error);
             });
     }, []);
 
@@ -79,7 +79,9 @@ const Class = () => {
                     </thead>
                     <tbody>
                         {newClass.map((classItem, index) => (
-                            <tr key={index}>
+                            <tr key={index}
+                            classItems={classItem}
+                            >
                                 <th>
                                     {index + 1}
                                 </th>
@@ -95,13 +97,13 @@ const Class = () => {
 
 
                                 <td>
-                                    <Link>
-                                        <button
-                                            className="btn btn-outline btn-secondary">
-                                            <AiFillEdit />
+                                    <Link to={`/DashBoard/classUpdate/${classItem._id}`}>
+                                        <button className="btn btn-outline btn-secondary">
+                                            <AiFillEdit />                                            
                                         </button>
                                     </Link>
                                 </td>
+
 
 
                                 <td>
