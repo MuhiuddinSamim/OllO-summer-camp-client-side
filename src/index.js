@@ -117,7 +117,7 @@ root.render(
     <HelmetProvider>
       <AuthProvider>
         <QueryClientProvider client={queryClient}>
-          <div> <RouterProvider router={router} /></div>
+          <RouterProvider router={router} />
         </QueryClientProvider>
       </AuthProvider>
     </HelmetProvider>

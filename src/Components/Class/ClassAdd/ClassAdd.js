@@ -1,38 +1,118 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
+import Swal from 'sweetalert2';
+
+
+const img_hosting = process.env.REACT_APP_Image_Upload_token;
+
 
 
 const ClassAdd = () => {
+    const [axiosSecure] = UseAxiosSecure();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting}`
+
+    const onSubmit = data => {
+        const formData = new FormData();
+        formData.append('image', data.ClassImage[0]);
+
+        fetch(img_hosting_url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    const imgUrl = result.data.display_url;
+                    const { ClassName, InstructorName, Price, InstructorEmail, AvailableSeats, Rating } = data;
+                    const AddClass = { ClassName, InstructorName, Price: parseFloat(Price), Rating: parseFloat(Rating), InstructorEmail, AvailableSeats: parseFloat(AvailableSeats), ClassImage: imgUrl }
+                    console.log(AddClass)
+                    axiosSecure.post('/newClassAdd', AddClass)
+                        .then(data => {
+                            if (data.data.insertedId) {
+                                Swal.fire(
+                                    'Good job!',
+                                    'You clicked the button!',
+                                    'success'
+                                )
+
+                            }
+
+                        })
+
+                
+                
+                    }
+            })
+
+    };
+
+
+
     return (
         <div>
             <form data-aos="fade-up-right" onSubmit={handleSubmit(onSubmit)}>
-                <h1 className=' text-center font-extrabold text-3xl mb-5'>Class add</h1>
+                <h1 className=' text-center font-extrabold text-3xl mb-5'>Instructor add</h1>
                 <div className="divider"></div>
 
                 <div className="px-24">
 
+
+
+
                     <div>
                         <label className="label">
-                            <span className="text-center">Photo Url</span>
+                            <span className="text-center">Class name</span>
                         </label>
                         <input
-                            type="text"
-                            {...register('photoUrl')}
-                            placeholder="Enter your Photo Url here"
+                            type="name"
+                            {...register('ClassName')}
+                            placeholder="Enter Your Class Name"
                             className="input input-bordered input-error w-full mb-2"
                             required
                         />
                     </div>
 
+
                     <div>
                         <label className="label">
-                            <span className="text-center">Toy Name</span>
+                            <span className="text-center">Class Image</span>
                         </label>
                         <input
-                            type="text"
-                            {...register('ToyName')}
+                            type="file"
+                            {...register('ClassImage')}
+                            className="input input-bordered input-error w-full mb-2"
+                            required
+                        />
+                    </div>
+
+
+
+
+                    <div>
+                        <label className="label">
+                            <span className="text-center">Instructor name</span>
+                        </label>
+                        <input
+                            type="name"
+                            {...register('InstructorName')}
+                            placeholder="Enter Instructor Name "
+                            className="input input-bordered input-error w-full mb-2"
+                            required
+                        />
+                    </div>
+
+
+
+
+                    <div>
+                        <label className="label">
+                            <span className="text-center">Instructor email</span>
+                        </label>
+                        <input
+                            type="email"
+                            {...register('InstructorEmail')}
                             placeholder="Enter your Toy name"
                             className="input input-bordered input-error w-full mb-2"
                             required
@@ -41,25 +121,62 @@ const ClassAdd = () => {
 
 
 
+
                     <div>
                         <label className="label">
-                            <span className="text-center">Description Product</span>
+                            <span className="text-center">Available Seats</span>
                         </label>
-                        <textarea
-                            {...register('detailsPage')}
-                            placeholder="Enter your toy details"
-                            rows={5}
-                            cols={50}
+                        <input
+                            type="number"
+                            min={0}
+                            {...register('AvailableSeats')}
+                            placeholder="Available Seats"
+                            className="input input-bordered input-error w-full mb-2"
                             required
-                            className="input input-bordered input-error w-full h-52 mb-2 p-5"
                         />
                     </div>
+
+
+
+                    <div>
+                        <label className="label">
+                            <span className="text-center">Price</span>
+                        </label>
+                        <input
+                            type="number"
+                            {...register('Price')}
+                            placeholder="Price"
+                            className="input input-bordered input-error w-full mb-2"
+                            required
+                        />
+                    </div>
+
+
+
+
+                    <div>
+                        <label className="label">
+                            <span className="text-center justify-center">Rating</span>
+                        </label>
+                        <input
+                            type="number"
+                            max={5}
+                            min={0}
+                            {...register('Rating')}
+                            placeholder="Enter your Toy name"
+                            className="input input-bordered input-error w-full mb-2"
+                            required
+                        />
+                    </div>
+
+
 
                     <button className="btn btn-outline btn-secondary" type="submit">
                         Add Toy
                     </button>
                 </div>
             </form>
+
         </div>
     );
 };

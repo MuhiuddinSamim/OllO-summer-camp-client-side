@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 
 const InstructorAdd = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
     return (
 
@@ -14,32 +14,118 @@ const InstructorAdd = () => {
             <div className="divider"></div>
 
             <div className="px-24">
+               
+
+
 
                 <div>
                     <label className="label">
-                        <span className="text-center">Photo Url</span>
+                        <span className="text-center">Class name</span>
                     </label>
                     <input
-                        type="text"
-                        {...register('photoUrl')}
-                        placeholder="Enter your Photo Url here"
+                        type="name"
+                        {...register('ClassName')}
+                        placeholder="Enter Your Class Name"
                         className="input input-bordered input-error w-full mb-2"
                         required
                     />
                 </div>
 
+
                 <div>
                     <label className="label">
-                        <span className="text-center">Toy Name</span>
+                        <span className="text-center">Class Image</span>
                     </label>
                     <input
-                        type="text"
-                        {...register('ToyName')}
+                        type="file"
+                        {...register('photo')}                        
+                        className="input input-bordered input-error w-full mb-2"
+                        required
+                    />
+                </div>
+
+
+
+
+                <div>
+                    <label className="label">
+                        <span className="text-center">Instructor name</span>
+                    </label>
+                    <input
+                        type="name"
+                        {...register('InstructorName')}
+                        placeholder="Enter Instructor Name "
+                        className="input input-bordered input-error w-full mb-2"
+                        required
+                    />
+                </div>
+
+
+
+
+                <div>
+                    <label className="label">
+                        <span className="text-center">Instructor email</span>
+                    </label>
+                    <input
+                        type="email"
+                        {...register('InstructorEmail')}
                         placeholder="Enter your Toy name"
                         className="input input-bordered input-error w-full mb-2"
                         required
                     />
                 </div>
+
+
+
+
+                <div>
+                    <label className="label">
+                        <span className="text-center">Available Seats</span>
+                    </label>
+                    <input
+                        type="number"
+                        min={0}
+                        {...register('AvailableSeats')}
+                        placeholder="Available Seats"
+                        className="input input-bordered input-error w-full mb-2"
+                        required
+                    />
+                </div>
+
+
+
+                <div>
+                    <label className="label">
+                        <span className="text-center">Price</span>
+                    </label>
+                    <input
+                        type="number"
+                        {...register('Price')}
+                        placeholder="Price"
+                        className="input input-bordered input-error w-full mb-2"
+                        required
+                    />
+                </div>
+
+
+
+
+                <div>
+                    <label className="label">
+                        <span className="text-center justify-center">Rating</span>
+                    </label>
+                    <input
+                        type="number"
+                        max={5}
+                        min={0}
+                        {...register('Rating')}
+                        placeholder="Enter your Toy name"
+                        className="input input-bordered input-error w-full mb-2"
+                        required
+                    />
+                </div>
+
 
 
 

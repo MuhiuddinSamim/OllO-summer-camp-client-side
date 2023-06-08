@@ -6,6 +6,7 @@ import {
     signOut, onAuthStateChanged, GithubAuthProvider, FacebookAuthProvider, updateProfile
 } from 'firebase/auth';
 import app from '../../Firebase/firebase.config';
+import axios from 'axios';
 
 
 
@@ -103,9 +104,20 @@ const AuthProvider = ({ children }) => {
 
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (UserLogged) => {
-            setUser(UserLogged);
-            setLoading(false);
+        const unsubscribe = onAuthStateChanged(auth, CurrentUser => {
+            setUser(CurrentUser);
+            if (CurrentUser) {
+                axios.post('http://localhost:5000/jwt', { email: CurrentUser.email })
+                    .then(data => {
+                        // console.log(data.data.token);
+                        localStorage.setItem('access-token', data.data.token);
+                        setLoading(false);
+                    })
+            }
+            else {
+                localStorage.removeItem('access-token');
+            }
+
         });
         return () => unsubscribe();
     }, []);
