@@ -53,7 +53,7 @@ const DashBoard = () => {
                             {isInstructor ? (
                                 <div>
                                     <ul>
-                                        <li><Link to="/DashBoard/instructor">Instructor 1</Link></li>
+                                        <li><Link to="/DashBoard/instructorAdmin">Instructor Admin</Link></li>
                                         <li><Link to="/DashBoard/class">Class</Link></li>
                                     </ul>
                                     <div className="divider"></div>
@@ -64,7 +64,7 @@ const DashBoard = () => {
 
                             <ul>
                                 <li><Link to="/">Home</Link></li>
-                                <li><Link to="/">My Classes</Link></li>
+                                <li><Link to="/myClass">My Classes</Link></li>
                             </ul>
 
                         </div>

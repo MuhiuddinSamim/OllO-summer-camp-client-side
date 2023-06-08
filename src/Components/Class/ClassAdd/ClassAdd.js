@@ -10,7 +10,7 @@ const img_hosting = process.env.REACT_APP_Image_Upload_token;
 
 const ClassAdd = () => {
     const [axiosSecure] = UseAxiosSecure();
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting}`
 
     const onSubmit = data => {
@@ -31,9 +31,10 @@ const ClassAdd = () => {
                     axiosSecure.post('/newClassAdd', AddClass)
                         .then(data => {
                             if (data.data.insertedId) {
+                                reset();
                                 Swal.fire(
-                                    'Good job!',
-                                    'You clicked the button!',
+                                    'Class added successfully',
+                                    'Class added and Thanks for',
                                     'success'
                                 )
 
@@ -41,9 +42,9 @@ const ClassAdd = () => {
 
                         })
 
-                
-                
-                    }
+
+
+                }
             })
 
     };
@@ -53,7 +54,7 @@ const ClassAdd = () => {
     return (
         <div className='w-full mb-5'>
             <form data-aos="fade-up-right" onSubmit={handleSubmit(onSubmit)}>
-                <h1 className=' text-center font-extrabold text-3xl mb-5'>Instructor add</h1>
+                <h1 className=' text-center font-extrabold text-3xl mb-5'>Class add</h1>
                 <div className="divider"></div>
 
                 <div className="px-24">
@@ -172,7 +173,7 @@ const ClassAdd = () => {
 
 
                     <button className="btn btn-outline btn-secondary" type="submit">
-                        Add Toy
+                        Add Class
                     </button>
                 </div>
             </form>

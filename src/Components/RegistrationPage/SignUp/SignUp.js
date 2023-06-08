@@ -14,7 +14,6 @@ const SignUp = () => {
     const navigate = useNavigate();
     const [confirmPassword, setConfirmPassword] = useState('');
     const [data, setData] = useState({ email: '', password: '' });
-
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const onSubmit = data => {

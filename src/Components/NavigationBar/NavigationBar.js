@@ -39,7 +39,7 @@ const NavigationBar = () => {
     );
 
 
-console.log(User)
+// console.log(User)
 
 
 

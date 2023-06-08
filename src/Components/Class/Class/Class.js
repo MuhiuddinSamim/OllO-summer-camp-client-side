@@ -10,48 +10,58 @@ const Class = () => {
     const [newClass, setNewClass] = useState([]);
 
     useEffect(() => {
+        fetchClass();
+    }, []);
+
+    const fetchClass = () => {
         axiosSecure.get('/newClassAdd')
             .then(response => {
                 const ClassData = response.data;
                 setNewClass(ClassData);
-                // console.log(ClassData);
+                console.log(response);
             })
             .catch(error => {
                 // console.error('Error:', error);
             });
-    }, []);
-
+    };
 
     const handelUserDelete = classItem => {
         Swal.fire({
             title: 'Are you sure?',
-            text: "Class has been deleted",
+            text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-        })
-            .then(result => {
-                if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/users/${classItem._id}`, {
-                        method: 'DELETE'
+        }).then(result => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/ClassData/${classItem._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('deleted res', data);
+                        if (data.deletedCount > 0) {
+                            fetchClass();
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Your work has been saved',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
                     })
-                        .then(res => res.json())
-                        .then(data => {
-                            console.log('deleted res', data);
-                            if (data.deletedCount > 0) {
-                                refetch();
-                                Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error deleting user:', error);
-                            Swal.fire('Error', 'Failed to delete user.', 'error');
-                        });
-                }
-            });
+                    .catch(error => {
+                        console.error('Error deleting user:', error);
+                        Swal.fire('Error', 'Failed to delete user.', 'error');
+                    });
+            }
+        });
     };
+
+
 
     return (
         <div className='w-full p-5'>
@@ -72,6 +82,7 @@ const Class = () => {
                             <th>Image</th>
                             <th>Class Name</th>
                             <th>Instructor name</th>
+                            <th>AvailableSeats</th>
                             <th>Edited</th>
                             <th>Delete</th>
 
@@ -79,8 +90,7 @@ const Class = () => {
                     </thead>
                     <tbody>
                         {newClass.map((classItem, index) => (
-                            <tr key={index}
-                            classItems={classItem}
+                            <tr key={classItem._id}
                             >
                                 <th>
                                     {index + 1}
@@ -94,12 +104,13 @@ const Class = () => {
                                 </td>
                                 <td>{classItem.ClassName}</td>
                                 <td>{classItem.InstructorName}</td>
+                                <td>{classItem.AvailableSeats}</td>
 
 
                                 <td>
                                     <Link to={`/DashBoard/classUpdate/${classItem._id}`}>
                                         <button className="btn btn-outline btn-secondary">
-                                            <AiFillEdit />                                            
+                                            <AiFillEdit />
                                         </button>
                                     </Link>
                                 </td>

@@ -1,15 +1,52 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
+import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
+
+
+const img_hosting = process.env.REACT_APP_Image_Upload_token;
+
 
 
 
 const InstructorAdd = () => {
+    const [axiosSecure] = UseAxiosSecure();
+    const { register, reset, handleSubmit} = useForm();
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting}`
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        const formData = new FormData();
+        formData.append('image', data.InstructorImage[0]);
+
+        fetch(img_hosting_url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    const imgUrl = result.data.display_url;
+                    const { InstructorName, InstructorEmail,Rating } = data;
+                    const AddInstructor = {InstructorName,  Rating: parseFloat(Rating), InstructorEmail,  InstructorImage: imgUrl }
+                    // console.log(AddInstructor)
+                    axiosSecure.post('/newInstructorAdd', AddInstructor)
+                        .then(data => {
+                            if (data.data.insertedId) {
+                                reset();
+                                Swal.fire(
+                                    'Instruct added successfully',
+                                    'Instruct added and thanks for',
+                                    'success'
+                                )
+                            }
+                        })
+                }
+            })
+    };
+
     return (
 
-        <div className='w-full'>
+        <div className='w-full mb-5'>
             <form data-aos="fade-up-right" onSubmit={handleSubmit(onSubmit)}>
                 <h1 className=' text-center font-extrabold text-3xl mb-5'>Instructor add</h1>
                 <div className="divider"></div>
@@ -21,11 +58,11 @@ const InstructorAdd = () => {
 
                     <div>
                         <label className="label">
-                            <span className="text-center">Class name</span>
+                            <span className="text-center">Instructor name</span>
                         </label>
                         <input
                             type="name"
-                            {...register('ClassName')}
+                            {...register('InstructorName')}
                             placeholder="Enter Your Class Name"
                             className="input input-bordered input-error w-full mb-2"
                             required
@@ -35,33 +72,15 @@ const InstructorAdd = () => {
 
                     <div>
                         <label className="label">
-                            <span className="text-center">Class Image</span>
+                            <span className="text-center">Instructor Image</span>
                         </label>
                         <input
                             type="file"
-                            {...register('photo')}
+                            {...register('InstructorImage')}
                             className="input input-bordered input-error w-full mb-2"
                             required
                         />
                     </div>
-
-
-
-
-                    <div>
-                        <label className="label">
-                            <span className="text-center">Instructor name</span>
-                        </label>
-                        <input
-                            type="name"
-                            {...register('InstructorName')}
-                            placeholder="Enter Instructor Name "
-                            className="input input-bordered input-error w-full mb-2"
-                            required
-                        />
-                    </div>
-
-
 
 
                     <div>
@@ -77,37 +96,6 @@ const InstructorAdd = () => {
                         />
                     </div>
 
-
-
-
-                    <div>
-                        <label className="label">
-                            <span className="text-center">Available Seats</span>
-                        </label>
-                        <input
-                            type="number"
-                            min={0}
-                            {...register('AvailableSeats')}
-                            placeholder="Available Seats"
-                            className="input input-bordered input-error w-full mb-2"
-                            required
-                        />
-                    </div>
-
-
-
-                    <div>
-                        <label className="label">
-                            <span className="text-center">Price</span>
-                        </label>
-                        <input
-                            type="number"
-                            {...register('Price')}
-                            placeholder="Price"
-                            className="input input-bordered input-error w-full mb-2"
-                            required
-                        />
-                    </div>
 
 
 
@@ -129,28 +117,13 @@ const InstructorAdd = () => {
 
 
 
-
-                    <div>
-                        <label className="label">
-                            <span className="text-center">Description Product</span>
-                        </label>
-                        <textarea
-                            {...register('detailsPage')}
-                            placeholder="Enter your toy details"
-                            rows={5}
-                            cols={50}
-                            required
-                            className="input input-bordered input-error w-full h-52 mb-2 p-5"
-                        />
-                    </div>
-
                     <button className="btn btn-outline btn-secondary" type="submit">
-                        Add Toy
+                        Add Instructor
                     </button>
                 </div>
             </form>
-        </div>
 
+        </div>
     );
 };
 

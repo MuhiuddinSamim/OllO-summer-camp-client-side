@@ -114,7 +114,13 @@ const Users = () => {
                             console.log('deleted res', data);
                             if (data.deletedCount > 0) {
                                 refetch();
-                                Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Your work has been saved',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
                             }
                         })
                         .catch(error => {
@@ -129,7 +135,7 @@ const Users = () => {
     return (
         <div className='w-full'>
             <div className="overflow-x-auto">
-                <table className="table">                
+                <table className="table">
                     <thead>
                         <tr>
                             <th>#</th>
