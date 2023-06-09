@@ -2,19 +2,20 @@ import React, { useEffect, useState } from 'react';
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 import { MdAutoDelete } from 'react-icons/md';
 import Swal from 'sweetalert2';
+import UseAuth from '../../Hooks/UseAuth';
 
 const StudentCart = () => {
     const [axiosSecure] = UseAxiosSecure();
     const [students, setStudent] = useState([]);
     const [total, setTotal] = useState(0);
+    const { User } = UseAuth();
 
     useEffect(() => {
         fetchStudents();
     }, []);
 
     const fetchStudents = () => {
-        axiosSecure
-            .get('/Student')
+        axiosSecure.get(`/student/${User.email}`)
             .then((response) => {
                 const studentData = response.data;
                 setStudent(studentData);

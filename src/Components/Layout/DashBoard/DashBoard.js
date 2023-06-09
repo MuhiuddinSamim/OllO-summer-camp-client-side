@@ -6,6 +6,8 @@ import UseInstructor from '../../Hooks/UseInstructor';
 import UseClassCart from '../../Hooks/UseClassCart';
 import { useQuery } from '@tanstack/react-query';
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
+import UseAuth from '../../Hooks/UseAuth';
+
 
 
 
@@ -32,18 +34,21 @@ const DashBoard = () => {
 
     const [axiosSecure,] = UseAxiosSecure();
     const [Student, setStudent] = useState([]);
+    const { User } = UseAuth();
 
     useEffect(() => {
-        axiosSecure.get('/Student')
+        axiosSecure.get(`/student/${User.email}`)
             .then(response => {
                 const Student = response.data;
                 setStudent(Student);
                 console.log(Student);
             })
             .catch(error => {
-
+                console.error('Error retrieving student data:', error);
+                // Handle error if necessary
             });
     }, []);
+
 
 
 
