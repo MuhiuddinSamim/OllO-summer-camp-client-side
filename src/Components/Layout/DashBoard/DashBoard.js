@@ -12,21 +12,21 @@ import useClassCart from '../../Hooks/UseClassCart';
 
 const DashBoard = () => {
     // samimhossain@gmail.comA
-    // const isAdmin = false;
-    const [isAdmin] = UseAdmin();
-  
+    const isAdmin = false;
+    // const [isAdmin] = UseAdmin();
 
-    // const isInstructor = true;
+
+    const isInstructor = true;
     // instructor@gmail.comA
-    const [isInstructor] = UseInstructor();
-    
+    // const [isInstructor] = UseInstructor();
+
 
     // const isStudent = true;
     // student@gmail.comA
 
     const [student] = useClassCart();
     console.log(student)
-   
+
 
 
     return (
@@ -48,7 +48,7 @@ const DashBoard = () => {
                                     <ul>
                                         <h1 className='font-extrabold text-center text-3xl'>Admin</h1>
 
-                                        <li><Link to='/DashBoard'>Admin Home</Link></li>
+                                        <li><Link to='/DashBoard'>Admin Home</Link></li>                                        
                                         <li><Link to="/DashBoard/instructorAdmin">Instructor Home</Link></li>
                                         <li><Link to='/DashBoard/class'>Class</Link></li>
                                         <li><Link to='/DashBoard/add'>Total Student</Link></li>
@@ -63,9 +63,7 @@ const DashBoard = () => {
                                 <div>
                                     <ul>
                                         <h1 className='font-extrabold text-center text-3xl'>Instructor</h1>
-
-                                        <li><Link to="/DashBoard/class">Instructor Home</Link></li>
-                                        <li><Link to="/DashBoard/class">Instructor Class</Link></li>
+                                        <li><Link to="/DashBoard/instructorClass">Instructor Class</Link></li>
                                         <li><Link to='/DashBoard/add'>Total Student</Link></li>
                                         <li><Link to="/">Website Home</Link></li>
                                     </ul>

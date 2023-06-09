@@ -6,7 +6,7 @@ import { AiFillEdit } from 'react-icons/ai';
 import Swal from 'sweetalert2';
 
 const Class = () => {
-    const [axiosSecure, refetch] = UseAxiosSecure();
+    const [axiosSecure] = UseAxiosSecure();
     const [newClass, setNewClass] = useState([]);
 
     useEffect(() => {

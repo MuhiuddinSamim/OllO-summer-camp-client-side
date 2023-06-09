@@ -12,10 +12,18 @@ const Home = () => {
                 <title>common || Home</title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
-            <SliderSection></SliderSection>
-            <PopularClasses></PopularClasses>
-            <PopularInstructors></PopularInstructors>
-            <NoticeSection/>
+            <div className='h-1/2'>
+                <SliderSection></SliderSection>
+            </div>
+            <div>
+                <PopularClasses></PopularClasses>
+            </div>
+            <div>
+                <PopularInstructors></PopularInstructors>
+            </div>
+            <div>
+                <NoticeSection />
+            </div>
         </div>
     );
 };

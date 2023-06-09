@@ -1,38 +1,57 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 
 const SliderSection = () => {
+    const [axiosSecure] = UseAxiosSecure();
+    const [Sliders, setSlider] = useState([]);
+    const [isPlaying, setIsPlaying] = useState(true);
+
+    useEffect(() => {
+        fetchClass();
+    }, []);
+
+    const fetchClass = () => {
+        axiosSecure.get('/Instructor')
+            .then(response => {
+                const Sliders = response.data;
+                setSlider(Sliders);
+                // console.log(Sliders);
+            })
+            .catch(error => {
+                // console.error('Error:', error);
+            });
+    };
+
+    const handleCarouselChange = (index) => {
+        if (index === Sliders.length - 1) {
+            setIsPlaying(true); 
+        }
+    };
+
+    
+
+
+
     return (
-        <div className="carousel w-full h-96 mt-12">
-            <div id="slide1" className="carousel-item relative w-full">
-                <img src="https://i.ibb.co/7n1r63f/3.png" className="w-full" />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide4" className="btn btn-circle">❮</a>
-                    <a href="#slide2" className="btn btn-circle">❯</a>
+        <Carousel
+            autoPlay={isPlaying}
+            interval={1500}
+            onChange={handleCarouselChange}
+            stopOnHover            
+
+        >
+            {Sliders.map((Slider) => (
+                <div key={Slider.id}>
+                    <img src={Slider.InstructorImage} alt={`Slide ${Slider.id}`} />
                 </div>
-            </div>
-            <div id="slide2" className="carousel-item relative w-full">
-                <img src="https://i.ibb.co/7n1r63f/3.png" className="w-full" />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide1" className="btn btn-circle">❮</a>
-                    <a href="#slide3" className="btn btn-circle">❯</a>
-                </div>
-            </div>
-            <div id="slide3" className="carousel-item relative w-full">
-                <img src="https://i.ibb.co/7n1r63f/3.png" className="w-full" />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide2" className="btn btn-circle">❮</a>
-                    <a href="#slide4" className="btn btn-circle">❯</a>
-                </div>
-            </div>
-            <div id="slide4" className="carousel-item relative w-full">
-                <img src="https://i.ibb.co/7n1r63f/3.png" className="w-full" />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide3" className="btn btn-circle">❮</a>
-                    <a href="#slide1" className="btn btn-circle">❯</a>
-                </div>
-            </div>
-        </div>
+            ))}
+        </Carousel>
+
+
     );
 };
 
 export default SliderSection;
+
