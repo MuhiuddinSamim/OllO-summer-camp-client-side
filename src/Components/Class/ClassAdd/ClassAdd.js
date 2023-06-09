@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 import Swal from 'sweetalert2';
+import UseAuth from '../../Hooks/UseAuth';
 
 
 const img_hosting = process.env.REACT_APP_Image_Upload_token;
@@ -10,6 +11,9 @@ const img_hosting = process.env.REACT_APP_Image_Upload_token;
 
 const ClassAdd = () => {
     const [axiosSecure] = UseAxiosSecure();
+    const { User } = UseAuth();
+    console.log(User.email)
+    console.log(User.displayName)
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting}`
 
@@ -97,7 +101,7 @@ const ClassAdd = () => {
                         </label>
                         <input
                             type="name"
-                            {...register('InstructorName')}
+                            value={User.displayName}
                             placeholder="Enter Instructor Name "
                             className="input input-bordered input-error w-full mb-2"
                             required
@@ -113,7 +117,7 @@ const ClassAdd = () => {
                         </label>
                         <input
                             type="email"
-                            {...register('InstructorEmail')}
+                            value={User.email}
                             placeholder="Enter your Toy name"
                             className="input input-bordered input-error w-full mb-2"
                             required

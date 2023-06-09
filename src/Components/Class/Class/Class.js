@@ -18,7 +18,7 @@ const Class = () => {
             .then(response => {
                 const ClassData = response.data;
                 setNewClass(ClassData);
-                console.log(response);
+                // console.log(response);
             })
             .catch(error => {
                 // console.error('Error:', error);

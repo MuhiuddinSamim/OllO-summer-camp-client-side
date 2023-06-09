@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { SiKingstontechnology, SiGoogleclassroom } from 'react-icons/si';
-import { AiFillHome } from 'react-icons/ai';
+import { AiFillHome, AiOutlineShoppingCart } from 'react-icons/ai';
 import UseAdmin from '../../Hooks/UseAdmin';
 import UseInstructor from '../../Hooks/UseInstructor';
+import useClassCart from '../../Hooks/UseClassCart';
+
 
 
 
@@ -11,18 +13,21 @@ import UseInstructor from '../../Hooks/UseInstructor';
 
 const DashBoard = () => {
     // samimhossain@gmail.comA
-    // const isAdmin = true;
+    // const isAdmin = false;
     const [isAdmin] = UseAdmin();
-    // console.log(isAdmin)
+  
 
     // const isInstructor = true;
     // instructor@gmail.comA
     const [isInstructor] = UseInstructor();
-    // console.log(isInstructor)
-    // 
+    
 
-    const isStudent = true;
+    // const isStudent = true;
     // student@gmail.comA
+
+    // const [student] = useClassCart();
+   
+
 
     return (
         <div>
@@ -42,7 +47,7 @@ const DashBoard = () => {
                                 <div>
                                     <ul>
                                         <h1 className='font-extrabold text-center text-3xl'>Admin</h1>
-                                        
+
                                         <li><Link to='/DashBoard'>Admin Home</Link></li>
                                         <li><Link to="/DashBoard/instructorAdmin">Instructor Home</Link></li>
                                         <li><Link to='/DashBoard/class'>Class</Link></li>
@@ -54,13 +59,11 @@ const DashBoard = () => {
                                     </ul>
                                     <div className="divider"></div>
                                 </div>
-                            ) : null}
-
-                            {isInstructor ? (
+                            ) : isInstructor ? (
                                 <div>
                                     <ul>
                                         <h1 className='font-extrabold text-center text-3xl'>Instructor</h1>
-                                        
+
                                         <li><Link to="/DashBoard/class">Instructor Home</Link></li>
                                         <li><Link to="/DashBoard/class">Instructor Class</Link></li>
                                         <li><Link to='/DashBoard/add'>Total Student</Link></li>
@@ -68,31 +71,30 @@ const DashBoard = () => {
                                     </ul>
                                     <div className="divider"></div>
                                 </div>
-                            ) : null}
-
-
-                            {isStudent ? (
-                                <div>
-                                    <ul>
-                                        <h1 className='font-extrabold text-center text-3xl'>Student</h1>
-                                        <li><Link to="/DashBoard/instructorAdmin">Student Home</Link></li>
-                                        <li><Link to="/DashBoard/class">My Class</Link></li>
-                                        <li><Link to='/DashBoard/add'>Payment History</Link></li>
-                                        <li><Link to="/">Website Home</Link></li>
-                                    </ul>
-                                    <div className="divider"></div>
-                                </div>
-                            ) : null}
-
-
+                            ) : <>
+                                <h1 className='font-extrabold text-center text-3xl'>Student</h1>
+                                <li>
+                                    <Link to="/DashBoard/courseCart">
+                                        <button className="btn">
+                                            <AiOutlineShoppingCart />
+                                            <div className="badge badge-secondary">
+                                                {/* + {student?.length || 0} */}
+                                            </div>
+                                        </button>
+                                    </Link>
+                                </li>
+                                <li><Link to="/DashBoard/class">My Class</Link></li>
+                                <li><Link to='/DashBoard/add'>Payment History</Link></li>
+                                <li><Link to="/">Website Home</Link></li>
+                                <div className="divider"></div>
+                            </>
+                            }
                         </div>
-
-
 
                     </ul>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 

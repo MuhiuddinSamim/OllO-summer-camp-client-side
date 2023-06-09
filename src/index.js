@@ -24,12 +24,13 @@ import DashBoard from './Components/Layout/DashBoard/DashBoard';
 import Instructor from './Components/InstructorPage/Instructor/Instructor';
 import ClassAdd from './Components/Class/ClassAdd/ClassAdd';
 import Users from './Components/Layout/AdminDashboard/Users/Users';
+import ClassUpdate from './Components/Class/ClassUpdate/ClassUpdate';
+import MyClass from './Components/Class/MyClass/MyClass';
+
 import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
-import ClassUpdate from './Components/Class/ClassUpdate/ClassUpdate';
-import MyClass from './Components/Class/MyClass/MyClass';
 const queryClient = new QueryClient()
 
 
@@ -102,7 +103,7 @@ const router = createBrowserRouter([
 
       {
         path: 'classUpdate/:id',
-        element: <ClassUpdate></ClassUpdate>,       
+        element: <ClassUpdate></ClassUpdate>,
       },
 
       {
