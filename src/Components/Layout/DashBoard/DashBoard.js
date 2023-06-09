@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import UseAdmin from '../../Hooks/UseAdmin';
 import UseInstructor from '../../Hooks/UseInstructor';
 import UseClassCart from '../../Hooks/UseClassCart';
+import { useQuery } from '@tanstack/react-query';
+import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 
 
 
@@ -26,7 +28,23 @@ const DashBoard = () => {
 
     // const [Student] = UseClassCart();
     // console.log(Student)
-    
+
+
+    const [axiosSecure,] = UseAxiosSecure();
+    const [Student, setStudent] = useState([]);
+
+    useEffect(() => {
+        axiosSecure.get('/Student')
+            .then(response => {
+                const Student = response.data;
+                setStudent(Student);
+                console.log(Student);
+            })
+            .catch(error => {
+
+            });
+    }, []);
+
 
 
 
@@ -45,39 +63,38 @@ const DashBoard = () => {
                     <ul className="menu p-4 w-max h-full bg-base-300 text-base-content">
                         <div>
                             {isAdmin ? (
-                                <div>
-                                    <ul>
-                                        <h1 className='font-extrabold text-center text-3xl'>Admin</h1>
+                                <>
+                                    <h1 className='font-extrabold text-center text-3xl'>Admin</h1>
 
-                                        <li><Link to='/DashBoard'>Admin Home</Link></li>                                        
-                                        <li><Link to="/DashBoard/instructorAdmin">Instructor Home</Link></li>
-                                        <li><Link to='/DashBoard/class'>Class</Link></li>
-                                        <li><Link to='/DashBoard/add'>Total Student</Link></li>
-                                        <li><Link to='/DashBoard/add'>2</Link></li>
-                                        <li><Link to='/DashBoard/add'>Payment</Link></li>
-                                        <li><Link to='/DashBoard/users'>All Users</Link></li>
-                                        <li><Link to="/">Website Home</Link></li>
-                                    </ul>
+                                    <li><Link to='/DashBoard'>Admin Home</Link></li>
+                                    <li><Link to="/DashBoard/instructorAdmin">Instructor Home</Link></li>
+                                    <li><Link to='/DashBoard/class'>Class</Link></li>
+                                    <li><Link to='/DashBoard/add'>Total Student</Link></li>
+                                    <li><Link to='/DashBoard/add'>2</Link></li>
+                                    <li><Link to='/DashBoard/add'>Payment</Link></li>
+                                    <li><Link to='/DashBoard/users'>All Users</Link></li>
+                                    <li><Link to="/">Website Home</Link></li>
+
                                     <div className="divider"></div>
-                                </div>
+                                </>
                             ) : isInstructor ? (
-                                <div>
-                                    <ul>
-                                        <h1 className='font-extrabold text-center text-3xl'>Instructor</h1>
-                                        <li><Link to="/DashBoard/instructorClass">Instructor Class</Link></li>
-                                        <li><Link to='/DashBoard/add'>Total Student</Link></li>
-                                        <li><Link to="/">Website Home</Link></li>
-                                    </ul>
+                                <>
+
+                                    <h1 className='font-extrabold text-center text-3xl'>Instructor</h1>
+                                    <li><Link to="/DashBoard/instructorClass">Instructor Class</Link></li>
+                                    <li><Link to='/DashBoard/add'>Total Student</Link></li>
+                                    <li><Link to="/">Website Home</Link></li>
+
                                     <div className="divider"></div>
-                                </div>
+                                </>
                             ) : <>
                                 <h1 className='font-extrabold text-center text-3xl'>Student</h1>
                                 <li>
-                                    <Link to="/DashBoard/courseCart">
-                                        <button className="btn">
+                                    <Link to="/DashBoard/studentCart">
+                                        <button className="btn btn-lg btn-active">
                                             <AiOutlineShoppingCart />
                                             <div className="badge badge-secondary">
-                                                +  0
+                                                + {Student?.length || 0}
                                             </div>
                                         </button>
                                     </Link>
@@ -92,8 +109,8 @@ const DashBoard = () => {
 
                     </ul>
                 </div>
-            </div >
-        </div >
+            </div>
+        </div>
     );
 };
 
