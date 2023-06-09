@@ -7,8 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import useClassCart from '../../Hooks/UseClassCart';
 
 
-const MyClassCart = ({ cartClass }) => {
-    console.log(cartClass)
+const MyClassCart = ({ cartClass }) => {    
     const { User } = UseAuth();
     const navigate = useNavigate();
     const location = useLocation();
@@ -16,7 +15,7 @@ const MyClassCart = ({ cartClass }) => {
 
 
     const handleCourseAdToCart = (cartClass) => {
-        console.log(cartClass)
+        // console.log(cartClass)
         if (User && User.email) {
             const CartItem = {
                 CartMenu: cartClass._id,
@@ -25,7 +24,7 @@ const MyClassCart = ({ cartClass }) => {
                 ClassImage: cartClass.ClassImage,
                 InstructorEmail: User.email,
             };
-            fetch('http://localhost:5000/student', {
+            fetch('http://localhost:5000/student}', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -35,6 +34,7 @@ const MyClassCart = ({ cartClass }) => {
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.insertedId) {
+                        console.log(data)
                         Swal.fire(
                             'Class Cart added successfully',
                             'Cart check and proceed to payment',

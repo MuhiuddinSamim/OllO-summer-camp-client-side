@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { SiKingstontechnology, SiGoogleclassroom } from 'react-icons/si';
-import { AiFillHome, AiOutlineShoppingCart } from 'react-icons/ai';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 import UseAdmin from '../../Hooks/UseAdmin';
 import UseInstructor from '../../Hooks/UseInstructor';
 import useClassCart from '../../Hooks/UseClassCart';
@@ -25,7 +24,8 @@ const DashBoard = () => {
     // const isStudent = true;
     // student@gmail.comA
 
-    // const [student] = useClassCart();
+    const [student] = useClassCart();
+    console.log(student)
    
 
 
@@ -78,7 +78,7 @@ const DashBoard = () => {
                                         <button className="btn">
                                             <AiOutlineShoppingCart />
                                             <div className="badge badge-secondary">
-                                                {/* + {student?.length || 0} */}
+                                                + {student?.length || 0}
                                             </div>
                                         </button>
                                     </Link>

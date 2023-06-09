@@ -12,7 +12,7 @@ const MyClass = () => {
             .then(response => {
                 const MyClass = response.data;
                 setMyClass(MyClass);
-                console.log(MyClass);
+                // console.log(MyClass);
             })
             .catch(error => {
 
