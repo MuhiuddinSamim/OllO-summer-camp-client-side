@@ -15,13 +15,13 @@ const Home = () => {
             <div className='h-1/2'>
                 <SliderSection></SliderSection>
             </div>
-            <div>
+            <div className='mt-5 mb-5'>
                 <PopularClasses></PopularClasses>
             </div>
-            <div>
+            <div className='mt-5 mb-5'>
                 <PopularInstructors></PopularInstructors>
             </div>
-            <div>
+            <div className='mt-5 mb-5'>
                 <NoticeSection />
             </div>
         </div>

@@ -2,8 +2,11 @@ import React from 'react';
 
 const NoticeSection = () => {
     return (
-        <div className='text-center mt-7'>
-            <h1>this is NoticeSection </h1>
+        <div className='mt-10'>
+            <h1 className='text-center text-4xl mb-5 font-extrabold'>
+                 Notice section 
+                <div className="divider"></div>
+            </h1>
         </div>
     );
 };
