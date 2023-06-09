@@ -3,7 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import UseAdmin from '../../Hooks/UseAdmin';
 import UseInstructor from '../../Hooks/UseInstructor';
-import useClassCart from '../../Hooks/UseClassCart';
+import UseClassCart from '../../Hooks/UseClassCart';
 
 
 
@@ -16,7 +16,7 @@ const DashBoard = () => {
     // const [isAdmin] = UseAdmin();
 
 
-    const isInstructor = true;
+    const isInstructor = false;
     // instructor@gmail.comA
     // const [isInstructor] = UseInstructor();
 
@@ -24,8 +24,9 @@ const DashBoard = () => {
     // const isStudent = true;
     // student@gmail.comA
 
-    const [student] = useClassCart();
-    console.log(student)
+    // const [Student] = UseClassCart();
+    // console.log(Student)
+    
 
 
 
@@ -76,7 +77,7 @@ const DashBoard = () => {
                                         <button className="btn">
                                             <AiOutlineShoppingCart />
                                             <div className="badge badge-secondary">
-                                                + {student?.length || 0}
+                                                +  0
                                             </div>
                                         </button>
                                     </Link>

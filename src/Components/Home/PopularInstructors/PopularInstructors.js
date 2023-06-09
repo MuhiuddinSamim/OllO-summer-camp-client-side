@@ -15,12 +15,12 @@ const PopularInstructors = () => {
             .then(response => {
                 const PopularInstructor = response.data;
                 setPopularInstructor(PopularInstructor);
-                console.log(PopularInstructor);
+                // console.log(PopularInstructor);
             })
             .catch(error => {
                 console.error('Error:', error);
             });
-    }, [axiosSecure]);
+    }, []);
     return (
 
         <div className='mt-16'>
@@ -36,7 +36,9 @@ const PopularInstructors = () => {
           md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12 py-3 px-3">
 
                 {PopularInstructor.map((Instructor) => (
-                    <div>
+                    <div
+                    key={Instructor._id}
+                    >
                         <div className="card w-96 bg-base-100 shadow-xl mt-4">
                             <figure>
 

@@ -3,21 +3,21 @@ import UseAuth from './UseAuth';
 import UseAxiosSecure from './UseAxiosSecure';
 
 
-const useClassCart = () => {
-    const { User, loading } = UseAuth();   
+const UseClassCart = () => {
+    const { User, loading } = UseAuth();
     const [axiosSecure] = UseAxiosSecure();
     const { refetch, data: student = [] } = useQuery({
-        queryKey: ['student', User?.email],
+        queryKey: ['Student', User?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axiosSecure(`/student?email=${User?.email}`)
-            // console.log('res from axios', res)
+            const res = await axiosSecure(`/Student?email=${User?.email}`)
+            console.log('res from axios', res.data)
             return res.data;
         },
     })
 
-    return [student, refetch]
+    return [student, refetch];
 
 }
-export default useClassCart;
+export default UseClassCart;
 

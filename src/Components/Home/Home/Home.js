@@ -12,7 +12,7 @@ const Home = () => {
                 <title>common || Home</title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
-            <div className='h-1/2'>
+            <div className='w-fit'>
                 <SliderSection></SliderSection>
             </div>
             <div className='mt-5 mb-5'>

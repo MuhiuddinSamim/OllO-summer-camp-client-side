@@ -21,7 +21,7 @@ const PopularClasses = () => {
             .catch(error => {
                 console.error('Error:', error);
             });
-    }, [axiosSecure]);
+    }, []);
 
 
     return (
@@ -38,7 +38,9 @@ const PopularClasses = () => {
           md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12 py-3 px-3">
 
                 {PopularClasses.map((Classes) => (
-                    <div>
+                    <div
+                    key={Classes._id}
+                    >
                         <div className="card w-96 bg-base-100 shadow-xl mt-4">
                             <figure>
 

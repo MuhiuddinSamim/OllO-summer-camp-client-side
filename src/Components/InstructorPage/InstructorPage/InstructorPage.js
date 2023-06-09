@@ -12,7 +12,7 @@ const InstructorPage = () => {
             .then(response => {
                 const Instructors = response.data;
                 setInstructors(Instructors);
-                console.log(Instructors);
+                // console.log(Instructors);
             })
             .catch(error => {
 
