@@ -11,7 +11,7 @@ const UseClassCart = () => {
         enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure(`/Student?email=${User?.email}`)
-            console.log('res from axios', res.data)
+            // console.log('res from axios', res.data)
             return res.data;
         },
     })

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
-import { MdAutoDelete } from 'react-icons/md';
+import { MdAutoDelete, MdOutlinePayment } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import UseAuth from '../../Hooks/UseAuth';
 import { Link } from 'react-router-dom';
@@ -20,7 +20,7 @@ const StudentCart = () => {
             .then((response) => {
                 const studentData = response.data;
                 setStudent(studentData);
-                console.log(studentData);
+                // console.log(studentData);
                 const totalAmount = studentData.reduce((sum, item) => item.Price + sum, 0);
                 setTotal(totalAmount);
             })
@@ -42,7 +42,7 @@ const StudentCart = () => {
         })
             .then(result => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/Student/${student._id}`, {
+                    fetch(`http://localhost:5000/CartStudent/${student._id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
@@ -73,10 +73,11 @@ const StudentCart = () => {
     return (
         <div className='w-full p-5'>
 
-            <div className='uppercase flex justify-between px-16'>
+            <div className='uppercase flex justify-between px-10'>
                 <h1 className='text-3xl'>Total Cart: {students.length}</h1>
                 <h1 className='text-3xl'>total price: ${total}</h1>
-                <Link to='/DashBoard/payment'>
+                <Link>
+                    {/* to='/DashBoard/payment' */}
                     <button
                         className="btn btn-outline btn-secondary">
                         Pay
@@ -97,13 +98,15 @@ const StudentCart = () => {
                                 <th>Instructor Name</th>
                                 <th>Price</th>
                                 <th>Delete</th>
+                                <th>Pay</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            {students.map((student, index) =>
-                                <tr
-                                    key={student._id}
+                  {students.map((student, index) =>
+                         <tr
+                           key={student._id}
+                                    student={student}
                                 >
                                     <th>{index + 1}</th>
                                     <td>
@@ -124,6 +127,15 @@ const StudentCart = () => {
                                             className="btn btn-outline btn-secondary">
                                             <MdAutoDelete />
                                         </button>
+                                    </th>
+                                    <th>
+                                        <Link to={`/DashBoard/payment/${student._id}`}>
+                                            <button
+                                                // onClick={() => handelCardRemove(student)}
+                                                className="btn btn-outline btn-secondary">
+                                                <MdOutlinePayment />
+                                            </button>
+                                        </Link>
                                     </th>
                                 </tr>)}
 

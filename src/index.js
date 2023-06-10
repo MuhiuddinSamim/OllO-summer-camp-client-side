@@ -118,10 +118,11 @@ const router = createBrowserRouter([
         element:<StudentCart></StudentCart>
       },
       {
-        path:'payment',
+        path:'payment/:id',
         element:<StudentPayment></StudentPayment>
       },
 
+    
 
 
 

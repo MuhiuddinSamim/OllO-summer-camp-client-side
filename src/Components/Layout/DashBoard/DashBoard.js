@@ -20,9 +20,9 @@ const DashBoard = () => {
     const [isAdmin] = UseAdmin();
 
 
-    // const isInstructor = false;
+    const isInstructor = false;
     // instructor@gmail.comA
-    const [isInstructor] = UseInstructor();
+    // const [isInstructor] = UseInstructor();
 
 
     // const isStudent = true;
@@ -32,27 +32,8 @@ const DashBoard = () => {
     // console.log(Student)
 
 
-    const [axiosSecure,] = UseAxiosSecure();
-    const [Student, setStudent] = useState([]);
-    const { User } = UseAuth();
-
-    useEffect(() => {
-        fetchStudents();
-    }, []);
-
-    const fetchStudents = () => {
-        axiosSecure.get(`/student/${User.email}`)
-            .then(response => {
-                const Student = response.data;
-                setStudent(Student);
-                console.log(Student);
-                fetchStudents();
-            })
-            .catch(error => {
-                console.error('Error retrieving student data:', error);
-                // Handle error if necessary
-            });
-    };
+    const [Student] =UseClassCart();
+    
 
 
 
@@ -89,7 +70,6 @@ const DashBoard = () => {
                                 </>
                             ) : isInstructor ? (
                                 <>
-
                                     <h1 className='font-extrabold text-center text-3xl'>Instructor</h1>
                                     <li><Link to="/DashBoard/instructorClass">Instructor Class</Link></li>
                                     <li><Link to='/DashBoard/add'>Total Student</Link></li>
