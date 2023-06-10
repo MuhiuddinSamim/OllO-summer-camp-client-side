@@ -16,13 +16,13 @@ import UseAuth from '../../Hooks/UseAuth';
 
 const DashBoard = () => {
     // samimhossain@gmail.comA
-    const isAdmin = false;
-    // const [isAdmin] = UseAdmin();
+    // const isAdmin = false;
+    const [isAdmin] = UseAdmin();
 
 
-    const isInstructor = false;
+    // const isInstructor = false;
     // instructor@gmail.comA
-    // const [isInstructor] = UseInstructor();
+    const [isInstructor] = UseInstructor();
 
 
     // const isStudent = true;
@@ -37,17 +37,22 @@ const DashBoard = () => {
     const { User } = UseAuth();
 
     useEffect(() => {
+        fetchStudents();
+    }, []);
+
+    const fetchStudents = () => {
         axiosSecure.get(`/student/${User.email}`)
             .then(response => {
                 const Student = response.data;
                 setStudent(Student);
                 console.log(Student);
+                fetchStudents();
             })
             .catch(error => {
                 console.error('Error retrieving student data:', error);
                 // Handle error if necessary
             });
-    }, []);
+    };
 
 
 
@@ -105,6 +110,7 @@ const DashBoard = () => {
                                     </Link>
                                 </li>
                                 <li><Link to="/DashBoard/class">My Class</Link></li>
+                                {/* <li><Link to='/DashBoard/add'></Link></li> */}
                                 <li><Link to='/DashBoard/add'>Payment History</Link></li>
                                 <li><Link to="/">Website Home</Link></li>
                                 <div className="divider"></div>

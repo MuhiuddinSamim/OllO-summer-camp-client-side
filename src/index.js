@@ -32,6 +32,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import StudentCart from './Components/Student/StudentCart/StudentCart';
+import StudentPayment from './Components/Student/StudentPayment/StudentPayment';
 const queryClient = new QueryClient()
 
 
@@ -115,7 +116,11 @@ const router = createBrowserRouter([
       {
         path: 'studentCart',
         element:<StudentCart></StudentCart>
-      }
+      },
+      {
+        path:'payment',
+        element:<StudentPayment></StudentPayment>
+      },
 
 
 

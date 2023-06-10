@@ -3,6 +3,7 @@ import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 import { MdAutoDelete } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import UseAuth from '../../Hooks/UseAuth';
+import { Link } from 'react-router-dom';
 
 const StudentCart = () => {
     const [axiosSecure] = UseAxiosSecure();
@@ -75,8 +76,14 @@ const StudentCart = () => {
             <div className='uppercase flex justify-between px-16'>
                 <h1 className='text-3xl'>Total Cart: {students.length}</h1>
                 <h1 className='text-3xl'>total price: ${total}</h1>
-                <button className="btn btn-outline btn-secondary">Pay</button>
+                <Link to='/DashBoard/payment'>
+                    <button
+                        className="btn btn-outline btn-secondary">
+                        Pay
+                    </button>
+                </Link>
             </div>
+            <div className="divider"></div>
 
             <div>
                 <div className="overflow-x-auto">
@@ -87,6 +94,7 @@ const StudentCart = () => {
                                 <th>#</th>
                                 <th>Class Photo</th>
                                 <th>Class Name</th>
+                                <th>Instructor Name</th>
                                 <th>Price</th>
                                 <th>Delete</th>
                             </tr>
@@ -108,6 +116,7 @@ const StudentCart = () => {
                                         </div>
                                     </td>
                                     <td>{student.ClassName}</td>
+                                    <td>{student.InstructorName}</td>
                                     <td>{student.Price}</td>
                                     <th>
                                         <button

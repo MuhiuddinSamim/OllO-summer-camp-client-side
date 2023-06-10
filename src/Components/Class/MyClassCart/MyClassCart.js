@@ -1,15 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
-// import UseAuth from '../../Hooks/UseAuth';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../AuthProvider/AuthProvider/AuthProvider';
+import UseAuth from '../../Hooks/UseAuth';
 
 
 
 const MyClassCart = ({ cartClass }) => {
-    const { User } = useContext(AuthContext);
+    const { User } = UseAuth();
     const navigate = useNavigate();
     const location = useLocation();
 
