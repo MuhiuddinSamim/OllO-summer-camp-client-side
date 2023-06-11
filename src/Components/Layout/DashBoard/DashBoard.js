@@ -52,11 +52,11 @@ const DashBoard = () => {
 
 
     // samimhossain@gmail.comA
-    const isAdmin = true;
+    const isAdmin =false;
     // const [isAdmin] = UseAdmin();
 
 
-    const isInstructor = false;
+    const isInstructor = true;
     // instructor@gmail.comA
     // const [isInstructor] = UseInstructor();
 
@@ -108,6 +108,7 @@ const DashBoard = () => {
                                 <>
                                     <h1 className='font-extrabold text-center text-3xl'>Instructor</h1>
                                     <li><Link to="/DashBoard/instructorClass">Instructor Class</Link></li>
+                                    <li><Link to='/DashBoard/InstructorFeedback'>Admin Feedback</Link></li>
                                     <li><Link to='/DashBoard/add'>Total Student</Link></li>
                                     <li><Link to="/">Website Home</Link></li>
 

@@ -30,7 +30,7 @@ const TotalPayments = () => {
     const handelPaymentapproved = (payments) => {
         Swal.fire({
             title: 'Are you sure?',
-            text: "Changes Updated Instructor",
+            text: "Approve order",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -49,7 +49,7 @@ const TotalPayments = () => {
                             Swal.fire({
                                 position: 'top-end',
                                 icon: 'success',
-                                title: 'instructor Successfully Updated',
+                                title: 'Approve Successfully',
                                 showConfirmButton: false,
                                 timer: 1500
                             });
@@ -70,36 +70,35 @@ const TotalPayments = () => {
 
         })
     }
+
+
 
 
 
     const handelPaymentDeny = (payments) => {
         Swal.fire({
-            title: 'Are you sure?',
-            text: "Changes Updated Instructor",
-            icon: 'warning',
+            title: 'Your Deny feedback please',
+            input: 'textarea',
+            inputAttributes: {
+                autocapitalize: 'on',
+            },
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                fetch(`http://localhost:5000/payments/Deny/${payments._id}`, {
-                    method: 'PATCH',
+            confirmButtonText: 'Submit',
+            preConfirm: (inputValue) => {
+                return fetch(`http://localhost:5000/payments/Deny/${payments._id}`, {
+                    method: 'POST',
+                    body: JSON.stringify({ feedback: inputValue }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
                 })
-                    .then((response) => response.json())
+                    .then((response) => {
+                        console.log(response);
+                        return response.json();
+                    })
                     .then((data) => {
                         console.log(data);
-                        if (data.modifiedCount) {
-                            fetchInstructors();
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: 'instructor Successfully Updated',
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                        }
+                        return data;
                     })
                     .catch((error) => {
                         console.error(error);
@@ -109,13 +108,45 @@ const TotalPayments = () => {
                             text: 'Something went wrong!',
                         });
                     });
-
-
-            };
-
-
+            },
         })
-    }
+            .then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`http://localhost:5000/payments/Deny/${payments._id}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ status: 'Deny' }),
+                    })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            console.log(data);
+                            if (data.modifiedCount) {
+                                fetchInstructors();
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Deny Successfully',
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                });
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong!',
+                            });
+                        });
+                }
+            });
+    };
+
+
+
 
 
 
@@ -188,15 +219,17 @@ const TotalPayments = () => {
 
 
                                 <th>
-                                    {
-                                        payments.status === 'Deny ' ? 'Deny' :
-                                            <button
-                                                onClick={() => handelPaymentDeny(payments)}
-                                                className="btn btn-outline btn-secondary btn-sm">
-                                                Deny
-                                            </button>
+                                    {payments.status === 'Deny ' ? 'Deny' :
+                                        <button
+                                             onClick={() => handelPaymentDeny(payments)}
+                                            className="btn btn-outline btn-secondary btn-sm">
+                                            Deny
+                                        </button>
                                     }
+
                                 </th>
+                              
+                               
                             </tr>
                         )}
 
