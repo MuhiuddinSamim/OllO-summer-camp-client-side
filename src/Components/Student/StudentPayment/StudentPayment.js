@@ -1,8 +1,8 @@
 import React from "react";
-import CheckOutStudentPayment from "../CheckOutStudentPayment/CheckOutStudentPayment";
-import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import UseClassCart from "../../Hooks/UseClassCart";
+import CheckOutStudentPayment from "../CheckOutStudentPayment/CheckOutStudentPayment";
 
 
 
@@ -16,7 +16,7 @@ const StudentPayment = () => {
     // console.log(student._id)
     const [Student] = UseClassCart();
     // console.log(Student)
-   
+
     const total = Student.reduce((sum, item) => sum + item.Price, 0);
 
     const Price = parseFloat(total.toFixed(2))
@@ -26,7 +26,7 @@ const StudentPayment = () => {
     return (
         <div className='w-full p-5'>
             <div className="flex justify-center items-center text-4xl">
-                <h1>Total Payment Continue Please</h1>
+                <h1>Payment Continue Please</h1>
             </div>
             <div className="divider"></div>
 
@@ -34,6 +34,7 @@ const StudentPayment = () => {
                 <Elements stripe={stripePromise} >
                     <CheckOutStudentPayment
                         Price={Price}
+                        Student={Student}
                     ></CheckOutStudentPayment>
                 </Elements>
             </div>

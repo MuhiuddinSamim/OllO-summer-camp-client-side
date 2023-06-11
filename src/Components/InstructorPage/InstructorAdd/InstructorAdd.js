@@ -11,7 +11,7 @@ const img_hosting = process.env.REACT_APP_Image_Upload_token;
 
 const InstructorAdd = () => {
     const [axiosSecure] = UseAxiosSecure();
-    const { register, reset, handleSubmit} = useForm();
+    const { register, reset, handleSubmit } = useForm();
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting}`
 
     const onSubmit = data => {
@@ -26,11 +26,17 @@ const InstructorAdd = () => {
             .then(result => {
                 if (result.success) {
                     const imgUrl = result.data.display_url;
-                    const { InstructorName, InstructorEmail,Rating } = data;
-                    const AddInstructor = {InstructorName,  Rating: parseFloat(Rating), InstructorEmail,  InstructorImage: imgUrl }
+                    const { InstructorName, InstructorEmail, Rating } = data;
+                    const AddInstructor = {
+                        name: InstructorName,
+                        email: InstructorEmail,
+                        Rating: parseFloat(Rating), 
+                        InstructorImage: imgUrl
+                    }
                     // console.log(AddInstructor)
                     axiosSecure.post('/newInstructorAdd', AddInstructor)
                         .then(data => {
+                            console.log(data)
                             if (data.data.insertedId) {
                                 reset();
                                 Swal.fire(

@@ -12,6 +12,7 @@ const Users = () => {
         return res.json();
     });
 
+    console.log(users)
     const handleChangeAdmin = (user) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -23,12 +24,11 @@ const Users = () => {
             confirmButtonText: 'Yes, update it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/admin/${user.email}`, {
+                fetch(`http://localhost:5000/users/admin/${user._id}`, {
                     method: 'PATCH',
                 })
                     .then((response) => response.json())
-                    .then((data) => {
-                        console.log(data);
+                    .then((data) => {                       
                         if (data.modifiedCount) {
                             refetch();
                             Swal.fire({
@@ -64,7 +64,7 @@ const Users = () => {
             confirmButtonText: 'Yes'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/instructor/${user.email}`, {
+                fetch(`http://localhost:5000/users/instructor/${user._id}`, {
                     method: 'PATCH',
                 })
                     .then((response) => response.json())
@@ -95,6 +95,7 @@ const Users = () => {
 
 
     const handelUserDelete = user => {
+
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",

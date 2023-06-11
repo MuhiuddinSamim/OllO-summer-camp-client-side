@@ -20,9 +20,9 @@ const DashBoard = () => {
     const [isAdmin] = UseAdmin();
 
 
-    const isInstructor = false;
+    // const isInstructor = false;
     // instructor@gmail.comA
-    // const [isInstructor] = UseInstructor();
+    const [isInstructor] = UseInstructor();
 
 
     // const isStudent = true;
@@ -58,7 +58,7 @@ const DashBoard = () => {
                                     <h1 className='font-extrabold text-center text-3xl'>Admin</h1>
 
                                     <li><Link to='/DashBoard'>Admin Home</Link></li>
-                                    <li><Link to="/DashBoard/instructorAdmin">Instructor Home</Link></li>
+                                    <li><Link to="/DashBoard/instructorAdmin">Instructor</Link></li>
                                     <li><Link to='/DashBoard/class'>Class</Link></li>
                                     <li><Link to='/DashBoard/add'>Total Student</Link></li>
                                     <li><Link to='/DashBoard/add'>2</Link></li>
@@ -89,8 +89,7 @@ const DashBoard = () => {
                                         </button>
                                     </Link>
                                 </li>
-                                <li><Link to="/DashBoard/class">My Class</Link></li>
-                                {/* <li><Link to='/DashBoard/add'></Link></li> */}
+                                <li><Link to="/DashBoard/class">My Class</Link></li>                               
                                 <li><Link to='/DashBoard/add'>Payment History</Link></li>
                                 <li><Link to="/">Website Home</Link></li>
                                 <div className="divider"></div>

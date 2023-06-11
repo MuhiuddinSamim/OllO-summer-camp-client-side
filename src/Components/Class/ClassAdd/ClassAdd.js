@@ -41,13 +41,9 @@ const ClassAdd = () => {
                                     'Class added and Thanks for',
                                     'success'
                                 )
-
                             }
 
                         })
-
-
-
                 }
             })
 
