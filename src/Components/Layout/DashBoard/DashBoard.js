@@ -52,17 +52,18 @@ const DashBoard = () => {
 
 
     // samimhossain@gmail.comA
-    const isAdmin =false;
-    // const [isAdmin] = UseAdmin();
+    // const isAdmin =false;
+    const [isAdmin] = UseAdmin();
 
 
-    const isInstructor = true;
+    // const isInstructor = true;
     // instructor@gmail.comA
-    // const [isInstructor] = UseInstructor();
+    const [isInstructor] = UseInstructor();
 
 
     // const isStudent = true;
     // student@gmail.comA
+    // studenttest@gmail.comA
 
     // const [Student] = UseClassCart();
     // console.log(Student)
@@ -127,7 +128,7 @@ const DashBoard = () => {
                                     </Link>
                                 </li>
                                 <li><Link to="/DashBoard/class">My Class</Link></li>
-                                <li><Link to='/DashBoard/add'>Payment History</Link></li>
+                                <li><Link to='/DashBoard/StudentPaymentHistory'>Payment History</Link></li>
                                 <li><Link to="/">Website Home</Link></li>
                                 <div className="divider"></div>
                             </>

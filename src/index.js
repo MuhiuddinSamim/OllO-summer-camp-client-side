@@ -35,6 +35,7 @@ import StudentCart from './Components/Student/StudentCart/StudentCart';
 import StudentPayment from './Components/Student/StudentPayment/StudentPayment';
 import TotalPayments from './Components/Layout/AdminDashboard/TotalPayments/TotalPayments';
 import InstructorFeedback from './Components/InstructorPage/InstructorFeedback/InstructorFeedback';
+import StudentPaymentHistory from './Components/Student/StudentPaymentHistory/StudentPaymentHistory';
 const queryClient = new QueryClient()
 
 
@@ -117,23 +118,28 @@ const router = createBrowserRouter([
 
       {
         path: 'studentCart',
-        element:<StudentCart></StudentCart>
+        element: <StudentCart></StudentCart>
       },
       {
-        path:'payment/:id',
-        element:<StudentPayment></StudentPayment>
+        path: 'payment/:id',
+        element: <StudentPayment></StudentPayment>
       },
       {
-        path:'TotalPayments',
-        element:<TotalPayments></TotalPayments>
+        path: 'TotalPayments',
+        element: <TotalPayments></TotalPayments>
       },
 
       {
-        path:'InstructorFeedback',
+        path: 'InstructorFeedback',
         element: <InstructorFeedback></InstructorFeedback>
-      }
+      },
 
-    
+      {
+        path: "StudentPaymentHistory",
+        element: <StudentPaymentHistory></StudentPaymentHistory>
+      },
+
+
 
 
 
