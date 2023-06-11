@@ -36,6 +36,7 @@ import StudentPayment from './Components/Student/StudentPayment/StudentPayment';
 import TotalPayments from './Components/Layout/AdminDashboard/TotalPayments/TotalPayments';
 import InstructorFeedback from './Components/InstructorPage/InstructorFeedback/InstructorFeedback';
 import StudentPaymentHistory from './Components/Student/StudentPaymentHistory/StudentPaymentHistory';
+import StudentMyClass from './Components/Student/StudentMyClass/StudentMyClass';
 const queryClient = new QueryClient()
 
 
@@ -138,6 +139,10 @@ const router = createBrowserRouter([
         path: "StudentPaymentHistory",
         element: <StudentPaymentHistory></StudentPaymentHistory>
       },
+      {
+        path: 'StudentMyClass',
+        element: <StudentMyClass></StudentMyClass>
+      }
 
 
 

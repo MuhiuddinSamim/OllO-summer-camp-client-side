@@ -127,7 +127,7 @@ const DashBoard = () => {
                                         </button>
                                     </Link>
                                 </li>
-                                <li><Link to="/DashBoard/class">My Class</Link></li>
+                                <li><Link to="/DashBoard/StudentMyClass">My Class</Link></li>
                                 <li><Link to='/DashBoard/StudentPaymentHistory'>Payment History</Link></li>
                                 <li><Link to="/">Website Home</Link></li>
                                 <div className="divider"></div>
