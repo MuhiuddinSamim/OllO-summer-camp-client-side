@@ -43,7 +43,7 @@ const SliderSection = () => {
 
         >
             {Sliders.map((Slider) => (
-                <div key={Slider.id}>
+                <div key={Slider._id}>
                     <img src={Slider.InstructorImage} alt={`Slide ${Slider.id}`} />
                 </div>
             ))}
