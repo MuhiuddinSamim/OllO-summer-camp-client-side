@@ -6,7 +6,7 @@ import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 
 
 const CheckOutStudentPayment = ({ selects, price: payPrice }) => {
-    console.log(selects);
+    // console.log(selects);
     const stripe = useStripe();
     const elements = useElements();
     const { User } = UseAuth();
@@ -40,12 +40,12 @@ const CheckOutStudentPayment = ({ selects, price: payPrice }) => {
         if (card == null) {
             return;
         }
-        console.log(card)
+        // console.log(card)
 
         setProcessing(true);
 
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error,  } = await stripe.createPaymentMethod({
             type: "card",
             card,
         });
@@ -55,8 +55,8 @@ const CheckOutStudentPayment = ({ selects, price: payPrice }) => {
             setProcessing(false);
             return;
         }
-        console.log(clientSecret)
-        console.log(paymentMethod)
+        // console.log(clientSecret)
+        // console.log(paymentMethod)
 
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
@@ -77,7 +77,7 @@ const CheckOutStudentPayment = ({ selects, price: payPrice }) => {
         }
         setProcessing(false);
 
-        console.log("paymentIntent", paymentIntent);
+        // console.log("paymentIntent", paymentIntent);
 
         if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id);
@@ -86,14 +86,14 @@ const CheckOutStudentPayment = ({ selects, price: payPrice }) => {
                 email: User?.email,
                 transactionId: paymentIntent.id,
                 price: payPrice,
-                date: new Date(),
-                enrollStudent: selects?.map(item => item?.InstructorName),
-                seats: selects?.map(item => Number(item?.seats)),
+                date: new Date(),                
+                set: selects?.map(item => Number(item?.seats)),
                 addItems: selects?.map(item => item?._id),
-                selectedItems: selects?.map(item => item?.cartItemId),
+                InstructorEmail: selects?.map(item => item?.InstructorEmail),
+                selectedItems: selects?.map(item => item?.cartItemId),               
                 status: 'pending',
-                classImg: selects?.map(item => item?.image),
-                instructorNames: selects?.map(item => item?.name),
+                classImg: selects?.map(item => item?.ClassImage),
+                instructorNames: selects?.map(item => item?.InstructorName),
                 classNames: selects?.map(item => item?.ClassName)
             };
 
@@ -101,7 +101,7 @@ const CheckOutStudentPayment = ({ selects, price: payPrice }) => {
             axiosSecure
                 .post("/payments", payment)
                 .then((res) => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     if (res?.data?.result?.insertedId) {
                         // Display confirmation message
                     }

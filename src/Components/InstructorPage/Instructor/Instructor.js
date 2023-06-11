@@ -21,7 +21,7 @@ const Instructor = () => {
             .then(response => {
                 const Instructors = response.data;
                 setInstructor(Instructors);
-                console.log(Instructors);
+                // console.log(Instructors);
             })
             .catch(error => {
                 // console.error('Error:', error);

@@ -13,6 +13,7 @@ const Users = () => {
     });
 
     console.log(users)
+    
     const handleChangeAdmin = (user) => {
         Swal.fire({
             title: 'Are you sure?',

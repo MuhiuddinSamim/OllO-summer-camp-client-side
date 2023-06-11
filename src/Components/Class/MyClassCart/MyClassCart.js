@@ -20,7 +20,7 @@ const MyClassCart = ({ cartClass }) => {
 
 
     const handleCourseAdToCart = (cartClass) => {
-        console.log(cartClass);
+        // console.log(cartClass);
         if (User) {
             const { InstructorName, ClassName, ClassImage, Price, _id } = cartClass;
             const ClassCartItem = {
@@ -28,6 +28,7 @@ const MyClassCart = ({ cartClass }) => {
                 InstructorName,
                 ClassName,
                 userEmail: User.email,
+                userName: User.displayName,                
                 ClassImage,
                 Price,
             };

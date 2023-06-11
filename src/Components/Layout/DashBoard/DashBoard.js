@@ -52,7 +52,7 @@ const DashBoard = () => {
 
 
     // samimhossain@gmail.comA
-    const isAdmin = false;
+    const isAdmin = true;
     // const [isAdmin] = UseAdmin();
 
 
@@ -95,7 +95,7 @@ const DashBoard = () => {
 
                                     <li><Link to='/DashBoard'>Admin Home</Link></li>
                                     <li><Link to="/DashBoard/instructorAdmin">Instructor</Link></li>
-                                    <li><Link to='/DashBoard/class'>Class</Link></li>
+                                    <li><Link to='/DashBoard/TotalPayments'>Total Student Payment</Link></li>                                    
                                     <li><Link to='/DashBoard/add'>Total Student</Link></li>
                                     <li><Link to='/DashBoard/add'>2</Link></li>
                                     <li><Link to='/DashBoard/add'>Payment</Link></li>

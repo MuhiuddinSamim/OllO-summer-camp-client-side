@@ -12,12 +12,13 @@ const StudentPay = ({p}) => {
     const [selects, refetch] = StudentData()
     const { Price } = p    
     const payPrice = parseFloat(Price.toFixed(2))
-    console.log(p)
+    // console.log(p)
 
     return (
         <div>       
             <Elements stripe={stripePromise}>
-                <CheckOutStudentPayment refetch={refetch} 
+                <CheckOutStudentPayment 
+                refetch={refetch} 
                 selects={selects} 
                 price={payPrice}>
                 </CheckOutStudentPayment>
