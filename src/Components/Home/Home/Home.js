@@ -3,7 +3,8 @@ import { Helmet } from 'react-helmet-async';
 import SliderSection from '../SliderSection/SliderSection';
 import PopularClasses from '../PopularClasses/PopularClasses';
 import PopularInstructors from '../PopularInstructors/PopularInstructors';
-import NoticeSection from '../NoticeSection/NoticeSection';
+import ExtraSection from '../ExtraSection/ExtraSection';
+
 
 const Home = () => {
     return (
@@ -22,7 +23,7 @@ const Home = () => {
                 <PopularInstructors></PopularInstructors>
             </div>
             <div className='mt-5 mb-5'>
-                <NoticeSection />
+                <ExtraSection></ExtraSection>
             </div>
         </div>
     );
