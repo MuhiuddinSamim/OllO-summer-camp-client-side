@@ -17,7 +17,7 @@ const PopularClasses = () => {
             .then(response => {
                 const PopularClasses = response.data;
                 setPopularClass(PopularClasses);
-                // console.log(PopularClasses);
+                console.log(PopularClasses);
             })
             .catch(error => {
                 console.error('Error:', error);

@@ -13,7 +13,7 @@ const AdminStatus = () => {
     }, []);
 
     const fetchInstructors = () => {
-        axiosSecure.get('/option')
+        axiosSecure.get('/adminNewClassAdd')
             .then(response => {
                 const Statuss = response.data;
                 setStatus(Statuss);

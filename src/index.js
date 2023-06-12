@@ -63,15 +63,6 @@ const router = createBrowserRouter([
         path: 'signup',
         element: <SignUp />
       },
-
-
-      {
-        path: 'blog',
-        element: <PrivateRoutes><Blog /></PrivateRoutes>
-      },
-
-
-
       {
         path: 'Instructor',
         element: <InstructorPage></InstructorPage>
