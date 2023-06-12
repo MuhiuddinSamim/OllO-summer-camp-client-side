@@ -26,7 +26,7 @@ const PopularClasses = () => {
 
 
     return (
-        <div>
+        <div className='mt-10'>
             <div>
                 <h1 className='text-center text-4xl mb-5 font-extrabold'>
                     Popular Class
@@ -35,7 +35,7 @@ const PopularClasses = () => {
 
             </div>
 
-            <div className="w-11/12 md:10/12 mx-auto grid sm:grid-cols-1 
+            <div className="w-11/12 md:w-10/12 mx-auto grid sm:grid-cols-1 
           md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12 py-3 px-3">
 
                 {PopularClasses.map((Classes) => (
@@ -49,10 +49,10 @@ const PopularClasses = () => {
                                 rotate: [0, 0, 270, 270, 0],
                                 borderRadius: ['20%', '20%', '50%', '50%', '20%'],
                             }}>
-                            <div className="card w-96 bg-base-100 shadow-xl mt-4">
+                            <div className="card md:w-96 bg-base-100 shadow-xl mt-4">
                                 <figure>
 
-                                    <img className='rounded-2xl' src={Classes.ClassImage} alt="Shoes" />
+                                    <img className='rounded-2xl  w-full h-[255px]' src={Classes.ClassImage} alt="Shoes" />
                                 </figure>
                                 <div className="card-body">
                                     <div className='text-center font-extrabold text-2xl'>

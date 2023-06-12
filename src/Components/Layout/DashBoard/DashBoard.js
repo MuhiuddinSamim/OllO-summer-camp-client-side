@@ -4,6 +4,7 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import UseAdmin from '../../Hooks/UseAdmin';
 import UseInstructor from '../../Hooks/UseInstructor';
 import UseClassCart from '../../Hooks/UseClassCart';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -61,7 +62,7 @@ const DashBoard = () => {
     const [isInstructor] = UseInstructor();
 
 
-  
+
     // student@gmail.comA
     // studenttest@gmail.comA
 
@@ -78,6 +79,11 @@ const DashBoard = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>DashBoard || Dance School </title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
+
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center justify-center">
@@ -94,7 +100,7 @@ const DashBoard = () => {
                                 <>
                                     <h1 className='font-extrabold text-center text-3xl'>Admin</h1>
                                     {/* <li><Link to="/DashBoard/instructorClass">Instructor Class</Link></li>                                   */}
-                                  
+
                                     <li><Link to='/DashBoard/Status'>Instructor Status</Link></li>
                                     <li><Link to='/DashBoard/users'>All Users</Link></li>
                                     <li><Link to="/">Website Home</Link></li>
@@ -104,8 +110,8 @@ const DashBoard = () => {
                             ) : isInstructor ? (
                                 <>
                                     <h1 className='font-extrabold text-center text-3xl'>Instructor</h1>
-                                    <li><Link to="/DashBoard/instructorClass">Instructor add Class</Link></li>    
-                                    <li><Link to="/DashBoard/instructorClass">total en working</Link></li>    
+                                    <li><Link to="/DashBoard/instructorClass">Instructor add Class</Link></li>
+                                    <li><Link to="/DashBoard/instructorClass">total en working</Link></li>
                                     <li><Link to='/DashBoard/InstructorFeedback'>Admin Feedback</Link></li>
                                     <li><Link to="/">Website Home</Link></li>
 

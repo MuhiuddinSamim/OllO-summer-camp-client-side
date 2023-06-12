@@ -17,11 +17,17 @@ const ExtraSection = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-8">
 
-                <WelcomeCart image={image4} name='Best Teacher' details='Lorem ipsum dolor sit amet elit consectetur adipiscing sed eiusmod tempor.'></WelcomeCart>
+                <WelcomeCart image={image4} name='Best Teacher' 
+                details=''></WelcomeCart>
 
-                <WelcomeCart image={image1} name='Certificate to World' details='Lorem ipsum dolor sit amet elit consectetur adipiscing sed eiusmod tempor.'></WelcomeCart>
-                <WelcomeCart image={image2} name='Good Program' details='Lorem ipsum dolor sit amet elit consectetur adipiscing sed eiusmod tempor.'></WelcomeCart>
-                <WelcomeCart image={image3} name='Student Service' details='Lorem ipsum dolor sit amet elit consectetur adipiscing sed eiusmod tempor.'></WelcomeCart>
+                <WelcomeCart image={image1} name='Certificate to World' 
+                details=''></WelcomeCart>
+                
+                <WelcomeCart image={image2} name='Good Program' 
+                details=''></WelcomeCart>
+                
+                <WelcomeCart image={image3} name='Student Service' 
+                details=''></WelcomeCart>
 
 
             </div>

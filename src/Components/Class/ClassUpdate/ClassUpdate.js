@@ -2,17 +2,23 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 
 const ClassUpdate = () => {
- 
-   
+
+
     const onSubmit = data => {
 
     }
     return (
-        <div>
-            {/* <form data-aos="fade-up-right" onSubmit={handleSubmit(onSubmit)}>
+        <>
+            <Helmet>
+                <title>add Class || Dance School </title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
+            <div>
+                {/* <form data-aos="fade-up-right" onSubmit={handleSubmit(onSubmit)}>
                 <h1 className=' text-center font-extrabold text-3xl mb-5'>Instructor add</h1>
                 <div className="divider"></div>
 
@@ -136,8 +142,9 @@ const ClassUpdate = () => {
                     </button>
                 </div>
             </form> */}
-            updated not working
-        </div>
+                updated not working
+            </div>
+        </>
     );
 };
 

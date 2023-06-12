@@ -8,24 +8,31 @@ import ExtraSection from '../ExtraSection/ExtraSection';
 
 const Home = () => {
     return (
-        <div className='mt-12'>
+
+        <>
             <Helmet>
-                <title>common || Home</title>
+                <title>Home || Dance School </title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
 
-            <SliderSection></SliderSection>
+            <div className='mt-12'>
 
+                <div className='mt-10'>
+                    <SliderSection></SliderSection>
+                </div>
 
-            <PopularClasses></PopularClasses>
-
-            <div className='mt-5 mb-5'>
-                <PopularInstructors></PopularInstructors>
+                <div className='mt-10 mb-5'>
+                    <PopularClasses></PopularClasses>
+                </div>
+                
+                <div className='mt-5 mb-5'>
+                    <PopularInstructors></PopularInstructors>
+                </div>
+                <div className='mt-5 mb-5'>
+                    <ExtraSection></ExtraSection>
+                </div>
             </div>
-            <div className='mt-5 mb-5'>
-                <ExtraSection></ExtraSection>
-            </div>
-        </div>
+        </>
     );
 };
 

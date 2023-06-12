@@ -82,8 +82,8 @@ const SignUp = () => {
 
     return (
         <>
-            <Helmet>
-                <title>SignUp || common </title>
+             <Helmet>
+                <title>SignUp || Dance School </title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
 

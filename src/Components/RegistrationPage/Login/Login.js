@@ -83,7 +83,7 @@ const Login = () => {
 
         <>
             <Helmet>
-                <title>Login || common </title>
+                <title>Login || Dance School </title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
 

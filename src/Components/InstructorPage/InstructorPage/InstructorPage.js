@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 import InstructorPageDetails from '../InstructorPageDetails/InstructorPageDetails';
 import InstructorPageCart from '../InstructorPageCart/InstructorPageCart';
+import { Helmet } from 'react-helmet-async';
 
 const InstructorPage = () => {
     const [axiosSecure,] = UseAxiosSecure();
@@ -20,14 +21,23 @@ const InstructorPage = () => {
     }, []);
 
     return (
-        <div className="w-11/12 md:10/12 mx-auto grid sm:grid-cols-1 
+
+        <>
+            <Helmet>
+                <title>Instructor || Dance School </title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
+          
+            <div className="w-11/12 md:10/12 mx-auto grid sm:grid-cols-1 
         md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10 py-3 px-3">
-            {Instructors.map((Instructor) =>
-                <InstructorPageCart
-                    key={Instructor._id}
-                    Instructor={Instructor}
-                ></InstructorPageCart>)}
-        </div>
+                {Instructors.map((Instructor) =>
+                    <InstructorPageCart
+                        key={Instructor._id}
+                        Instructor={Instructor}
+                    ></InstructorPageCart>)}
+            </div>
+        </>
+
     );
 };
 

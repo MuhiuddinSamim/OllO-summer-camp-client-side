@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 import Swal from 'sweetalert2';
 import UseAuth from '../../Hooks/UseAuth';
+import { Helmet } from 'react-helmet-async';
 
 
 const img_hosting = process.env.REACT_APP_Image_Upload_token;
@@ -33,8 +34,8 @@ const ClassAdd = () => {
                     const AddClass = {
                         ClassName,
                         status: status,
-                        InstructorName:User.displayName,
-                        InstructorEmail:User.email,                        
+                        InstructorName: User.displayName,
+                        InstructorEmail: User.email,
                         Price: parseFloat(Price),
                         Rating: parseFloat(Rating),
                         AvailableSeats: parseFloat(AvailableSeats),
@@ -61,147 +62,155 @@ const ClassAdd = () => {
 
 
     return (
-        <div className='w-full mb-5'>
-            <form data-aos="fade-up-right" onSubmit={handleSubmit(onSubmit)}>
-                <h1 className=' text-center font-extrabold text-3xl mb-5'>Class add</h1>
-                <div className="divider"></div>
+        <>
+            <Helmet>
+                <title>add Class || Dance School </title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
 
-                <div className="px-24">
+            <div className='w-full mb-5'>
+                <form data-aos="fade-up-right" onSubmit={handleSubmit(onSubmit)}>
+                    <h1 className=' text-center font-extrabold text-3xl mb-5'>Class add</h1>
+                    <div className="divider"></div>
+
+                    <div className="px-24">
 
 
 
 
-                    <div>
-                        <label className="label">
-                            <span className="text-center">Class name</span>
-                        </label>
-                        <input
-                            type="name"
-                            {...register('ClassName')}
-                            placeholder="Enter Your Class Name"
-                            className="input input-bordered input-error w-full mb-2"
-                            required
-                        />
+                        <div>
+                            <label className="label">
+                                <span className="text-center">Class name</span>
+                            </label>
+                            <input
+                                type="name"
+                                {...register('ClassName')}
+                                placeholder="Enter Your Class Name"
+                                className="input input-bordered input-error w-full mb-2"
+                                required
+                            />
+                        </div>
+
+
+                        <div>
+                            <label className="label">
+                                <span className="text-center">Class Image</span>
+                            </label>
+                            <input
+                                type="file"
+                                {...register('ClassImage')}
+                                className="input input-bordered input-error w-full mb-2"
+                                required
+                            />
+                        </div>
+
+
+
+
+                        <div>
+                            <label className="label">
+                                <span className="text-center">Instructor name</span>
+                            </label>
+                            <input
+                                type="name"
+                                value={User.displayName}
+                                placeholder="Enter Instructor Name "
+                                className="input input-bordered input-error w-full mb-2"
+                                required
+                            />
+                        </div>
+
+
+
+
+                        <div>
+                            <label className="label">
+                                <span className="text-center">Instructor email</span>
+                            </label>
+                            <input
+                                type="email"
+                                value={User.email}
+                                placeholder="Enter your Toy name"
+                                className="input input-bordered input-error w-full mb-2"
+                                required
+                            />
+                        </div>
+
+
+
+
+                        <div>
+                            <label className="label">
+                                <span className="text-center">Available Seats</span>
+                            </label>
+                            <input
+                                type="number"
+                                min={0}
+                                {...register('AvailableSeats')}
+                                placeholder="Available Seats"
+                                className="input input-bordered input-error w-full mb-2"
+                                required
+                            />
+                        </div>
+
+
+
+                        <div>
+                            <label className="label">
+                                <span className="text-center">Price</span>
+                            </label>
+                            <input
+                                type="number"
+                                {...register('Price')}
+                                placeholder="Price"
+                                className="input input-bordered input-error w-full mb-2"
+                                required
+                            />
+                        </div>
+
+
+
+
+                        <div>
+                            <label className="label">
+                                <span className="text-center justify-center">Rating</span>
+                            </label>
+                            <input
+                                type="number"
+                                max={5}
+                                min={0}
+                                {...register('Rating')}
+                                placeholder="Enter your Toy name"
+                                className="input input-bordered input-error w-full mb-2"
+                                required
+                            />
+                        </div>
+
+
+                        <div>
+                            <label className="label">
+                                <span className="text-center justify-center">status approved to admin</span>
+                            </label>
+                            <input
+                                max={5}
+                                min={0}
+                                {...register('status')}
+                                className="input input-bordered input-error w-full mb-2"
+                                value='pending'
+                            />
+                        </div>
+
+
+
+                        <button className="btn btn-outline btn-secondary" type="submit">
+                            Add Class
+                        </button>
                     </div>
+                </form>
 
+            </div>
+        </>
 
-                    <div>
-                        <label className="label">
-                            <span className="text-center">Class Image</span>
-                        </label>
-                        <input
-                            type="file"
-                            {...register('ClassImage')}
-                            className="input input-bordered input-error w-full mb-2"
-                            required
-                        />
-                    </div>
-
-
-
-
-                    <div>
-                        <label className="label">
-                            <span className="text-center">Instructor name</span>
-                        </label>
-                        <input
-                            type="name"
-                            value={User.displayName}
-                            placeholder="Enter Instructor Name "
-                            className="input input-bordered input-error w-full mb-2"
-                            required
-                        />
-                    </div>
-
-
-
-
-                    <div>
-                        <label className="label">
-                            <span className="text-center">Instructor email</span>
-                        </label>
-                        <input
-                            type="email"
-                            value={User.email}
-                            placeholder="Enter your Toy name"
-                            className="input input-bordered input-error w-full mb-2"
-                            required
-                        />
-                    </div>
-
-
-
-
-                    <div>
-                        <label className="label">
-                            <span className="text-center">Available Seats</span>
-                        </label>
-                        <input
-                            type="number"
-                            min={0}
-                            {...register('AvailableSeats')}
-                            placeholder="Available Seats"
-                            className="input input-bordered input-error w-full mb-2"
-                            required
-                        />
-                    </div>
-
-
-
-                    <div>
-                        <label className="label">
-                            <span className="text-center">Price</span>
-                        </label>
-                        <input
-                            type="number"
-                            {...register('Price')}
-                            placeholder="Price"
-                            className="input input-bordered input-error w-full mb-2"
-                            required
-                        />
-                    </div>
-
-
-
-
-                    <div>
-                        <label className="label">
-                            <span className="text-center justify-center">Rating</span>
-                        </label>
-                        <input
-                            type="number"
-                            max={5}
-                            min={0}
-                            {...register('Rating')}
-                            placeholder="Enter your Toy name"
-                            className="input input-bordered input-error w-full mb-2"
-                            required
-                        />
-                    </div>
-
-
-                    <div>
-                        <label className="label">
-                            <span className="text-center justify-center">status approved to admin</span>
-                        </label>
-                        <input
-                            max={5}
-                            min={0}
-                            {...register('status')}
-                            className="input input-bordered input-error w-full mb-2"
-                            value='pending'
-                        />
-                    </div>
-
-
-
-                    <button className="btn btn-outline btn-secondary" type="submit">
-                        Add Class
-                    </button>
-                </div>
-            </form>
-
-        </div>
     );
 };
 

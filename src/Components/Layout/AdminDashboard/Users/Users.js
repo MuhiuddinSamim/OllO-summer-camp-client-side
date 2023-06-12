@@ -3,6 +3,7 @@ import React from 'react';
 import { MdAutoDelete } from 'react-icons/md';
 import { FaUsers } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -13,7 +14,7 @@ const Users = () => {
     });
 
     console.log(users)
-    
+
     const handleChangeAdmin = (user) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -29,7 +30,7 @@ const Users = () => {
                     method: 'PATCH',
                 })
                     .then((response) => response.json())
-                    .then((data) => {                       
+                    .then((data) => {
                         if (data.modifiedCount) {
                             refetch();
                             Swal.fire({
@@ -135,67 +136,71 @@ const Users = () => {
 
 
     return (
-        <div className='w-full'>
-            <div className="overflow-x-auto">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            users.map((user, index) =>
-                                <tr
-                                    key={user._id}
-                                >
-                                    <th>{index + 1}</th>
-                                    <td>{user.name}</td>
-                                    <td>{user.email}</td>
-                                    <div>
+
+        <>            
+           
+            <div className='w-full'>
+                <div className="overflow-x-auto">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                users.map((user, index) =>
+                                    <tr
+                                        key={user._id}
+                                    >
+                                        <th>{index + 1}</th>
+                                        <td>{user.name}</td>
+                                        <td>{user.email}</td>
+                                        <div>
+                                            <td>
+                                                {user.role === 'admin' ? 'admin' :
+                                                    <button
+                                                        onClick={() => handleChangeAdmin(user)}
+                                                        className="btn btn-outline btn-secondary">
+                                                        <FaUsers />
+                                                    </button>
+
+                                                }
+                                            </td>
+
+                                            <td>
+                                                {user.role === 'instructor' ? 'instructor' :
+                                                    <button
+                                                        onClick={() => handleChangeInstructor(user)}
+                                                        className="btn btn-outline btn-secondary">
+                                                        <FaUsers />
+                                                    </button>
+
+                                                }
+                                            </td>
+                                        </div>
                                         <td>
-                                            {user.role === 'admin' ? 'admin' :
-                                                <button
-                                                    onClick={() => handleChangeAdmin(user)}
-                                                    className="btn btn-outline btn-secondary">
-                                                    <FaUsers />
-                                                </button>
+                                            <button
+                                                onClick={() => handelUserDelete(user)}
+                                                className="btn btn-outline btn-secondary">
+                                                <MdAutoDelete />
+                                            </button>
 
-                                            }
                                         </td>
-
-                                        <td>
-                                            {user.role === 'instructor' ? 'instructor' :
-                                                <button
-                                                    onClick={() => handleChangeInstructor(user)}
-                                                    className="btn btn-outline btn-secondary">
-                                                    <FaUsers />
-                                                </button>
-
-                                            }
-                                        </td>
-                                    </div>
-                                    <td>
-                                        <button
-                                            onClick={() => handelUserDelete(user)}
-                                            className="btn btn-outline btn-secondary">
-                                            <MdAutoDelete />
-                                        </button>
-
-                                    </td>
-                                </tr>)
-                        }
+                                    </tr>)
+                            }
 
 
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+        </>
     )
 };
 
