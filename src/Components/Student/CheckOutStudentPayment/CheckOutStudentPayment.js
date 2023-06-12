@@ -98,8 +98,7 @@ const CheckOutStudentPayment = ({ selects, price: payPrice }) => {
                 quantity: selects.length,
                 selectedItems: selects?.map(item => item?.cartItemId),
             };
-
-
+            
             axiosSecure
                 .post("/payments", payment)
                 .then((res) => {

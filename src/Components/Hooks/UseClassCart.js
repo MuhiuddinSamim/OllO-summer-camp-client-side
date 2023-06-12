@@ -13,7 +13,11 @@ const UseClassCart = () => {
         queryKey: ['Student', User?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axiosSecure(`/Student?email=${User?.email}`)
+            const res = await axiosSecure(`/Student?email=${User?.email}`, {
+                headers: {
+                    authorization: `Bearer${token}`,
+                }
+            })
             // console.log(res.data)
             return res.data;
         },

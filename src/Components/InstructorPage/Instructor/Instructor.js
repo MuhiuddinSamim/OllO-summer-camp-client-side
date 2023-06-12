@@ -67,14 +67,6 @@ const Instructor = () => {
 
     return (
         <div className='w-full'>
-            <div className='flex justify-end mb-5'>
-                <Link to='/DashBoard/instructorAdd'>
-                    <button className="btn btn-outline btn-secondary">
-                        Add A new Instructor
-                    </button>
-
-                </Link>
-            </div>
 
             <div className="overflow-x-auto">
                 <table className="table ">

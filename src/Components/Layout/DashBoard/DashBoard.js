@@ -52,16 +52,16 @@ const DashBoard = () => {
 
 
     // samimhossain@gmail.comA
-    // const isAdmin =false;
+    // const isAdmin =true;
     const [isAdmin] = UseAdmin();
 
 
-    // const isInstructor = true;
+    // const isInstructor = false;
     // instructor@gmail.comA
     const [isInstructor] = UseInstructor();
 
 
-    // const isStudent = true;
+  
     // student@gmail.comA
     // studenttest@gmail.comA
 
@@ -93,13 +93,9 @@ const DashBoard = () => {
                             {isAdmin ? (
                                 <>
                                     <h1 className='font-extrabold text-center text-3xl'>Admin</h1>
-
-                                    <li><Link to='/DashBoard'>Admin Home</Link></li>
-                                    <li><Link to="/DashBoard/instructorAdmin">Instructor</Link></li>
-                                    <li><Link to='/DashBoard/TotalPayments'>Total Student Payment</Link></li>                                    
-                                    <li><Link to='/DashBoard/add'>Total Student</Link></li>
-                                    <li><Link to='/DashBoard/add'>2</Link></li>
-                                    <li><Link to='/DashBoard/add'>Payment</Link></li>
+                                    {/* <li><Link to="/DashBoard/instructorClass">Instructor Class</Link></li>                                   */}
+                                  
+                                    <li><Link to='/DashBoard/Status'>Instructor Status</Link></li>
                                     <li><Link to='/DashBoard/users'>All Users</Link></li>
                                     <li><Link to="/">Website Home</Link></li>
 
@@ -108,9 +104,9 @@ const DashBoard = () => {
                             ) : isInstructor ? (
                                 <>
                                     <h1 className='font-extrabold text-center text-3xl'>Instructor</h1>
-                                    <li><Link to="/DashBoard/instructorClass">Instructor Class</Link></li>
+                                    <li><Link to="/DashBoard/instructorClass">Instructor add Class</Link></li>    
+                                    <li><Link to="/DashBoard/instructorClass">total en working</Link></li>    
                                     <li><Link to='/DashBoard/InstructorFeedback'>Admin Feedback</Link></li>
-                                    <li><Link to='/DashBoard/add'>Total Student</Link></li>
                                     <li><Link to="/">Website Home</Link></li>
 
                                     <div className="divider"></div>

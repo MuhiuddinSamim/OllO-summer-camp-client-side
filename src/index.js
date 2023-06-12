@@ -17,7 +17,6 @@ import Blog from './Components/Blog/Blog';
 import PrivateRoutes from './Components/AuthProvider/PrivateRoutes/PrivateRoutes';
 import Home from './Components/Home/Home/Home';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
-import InstructorAdd from './Components/InstructorPage/InstructorAdd/InstructorAdd';
 import InstructorPage from './Components/InstructorPage/InstructorPage/InstructorPage';
 import Class from './Components/Class/Class/Class';
 import DashBoard from './Components/Layout/DashBoard/DashBoard';
@@ -37,6 +36,9 @@ import TotalPayments from './Components/Layout/AdminDashboard/TotalPayments/Tota
 import InstructorFeedback from './Components/InstructorPage/InstructorFeedback/InstructorFeedback';
 import StudentPaymentHistory from './Components/Student/StudentPaymentHistory/StudentPaymentHistory';
 import StudentMyClass from './Components/Student/StudentMyClass/StudentMyClass';
+import AdminRoute from './Components/Layout/AdminDashboard/AdminRoute/AdminRoute';
+import IinstructorRoutes from './Components/InstructorPage/IinstructorRoutes/IinstructorRoutes';
+import AdminStatus from './Components/Layout/AdminStatus/AdminStatus';
 const queryClient = new QueryClient()
 
 
@@ -88,33 +90,32 @@ const router = createBrowserRouter([
     element: <PrivateRoutes><DashBoard></DashBoard></PrivateRoutes>,
     children: [
       {
-        path: 'instructorAdmin',
-        element: <Instructor></Instructor>
+        path: 'users',
+        element: <AdminRoute><Users></Users></AdminRoute>
+      },
+      {
+        path: 'Status',
+        element: <AdminRoute><AdminStatus></AdminStatus></AdminRoute>
       },
 
-      {
-        path: 'instructorAdd',
-        element: <InstructorAdd />
-      },
 
       {
         path: 'instructorClass',
-        element: <Class></Class>
+        element: <IinstructorRoutes><Class></Class></IinstructorRoutes>
       },
 
       {
         path: 'classAdd',
-        element: <ClassAdd></ClassAdd>
+        element: <IinstructorRoutes><ClassAdd></ClassAdd></IinstructorRoutes>
       },
 
       {
         path: 'classUpdate/:id',
-        element: <ClassUpdate></ClassUpdate>,
+        element: <IinstructorRoutes><ClassUpdate></ClassUpdate></IinstructorRoutes>,
       },
-
       {
-        path: 'users',
-        element: <Users></Users>
+        path: 'InstructorFeedback',
+        element: <IinstructorRoutes><InstructorFeedback></InstructorFeedback></IinstructorRoutes>
       },
 
       {
@@ -125,15 +126,9 @@ const router = createBrowserRouter([
         path: 'payment/:id',
         element: <StudentPayment></StudentPayment>
       },
-      {
-        path: 'TotalPayments',
-        element: <TotalPayments></TotalPayments>
-      },
 
-      {
-        path: 'InstructorFeedback',
-        element: <InstructorFeedback></InstructorFeedback>
-      },
+
+
 
       {
         path: "StudentPaymentHistory",

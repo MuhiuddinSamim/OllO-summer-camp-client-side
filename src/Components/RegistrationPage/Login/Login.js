@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
-import { AiFillGithub } from 'react-icons/ai';
 import { BsFacebook } from 'react-icons/bs';
 import { FaTwitter } from 'react-icons/fa';
 import { AuthContext } from '../../AuthProvider/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
+import { AiFillGithub, AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+
 
 
 
@@ -85,6 +86,7 @@ const Login = () => {
                 <title>Login || common </title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
+
 
             <div>
 

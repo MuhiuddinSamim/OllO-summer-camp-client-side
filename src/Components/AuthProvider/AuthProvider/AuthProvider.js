@@ -2,6 +2,8 @@ import React, { createContext, useEffect, useState } from 'react';
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import app from '../../Firebase/firebase.config';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 
@@ -39,18 +41,42 @@ const AuthProvider = ({ children }) => {
     //==================================
 
     const GoogleProvider = new GoogleAuthProvider();
+
     const UserGoogleLogin = () => {
         setLoading(true);
         signInWithPopup(auth, GoogleProvider)
             .then((result) => {
                 const LoggedGoogleUser = result.user;
+                const sendUserData = { name: LoggedGoogleUser.displayName, email: LoggedGoogleUser.email };
 
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(sendUserData),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.insertedId) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Registered successfully',
+                            });
+                            Navigate('/');
+                        }
+                    })
+                    .catch((error) => {
+                        // Handle fetch error
+                        console.error(error);
+                    });
             })
             .catch((error) => {
-                // console.log(error);
+                // Handle sign in error
+                console.error(error);
             });
     };
-
 
 
 
@@ -103,8 +129,7 @@ const AuthProvider = ({ children }) => {
             setUser(CurrentUser);
             if (CurrentUser) {
                 axios.post('http://localhost:5000/jwt', { email: CurrentUser.email })
-                    .then(data => {
-                        // console.log(data.data.token);
+                    .then(data => {                       
                         localStorage.setItem('access-token', data.data.token);
                         setLoading(false);
                     })

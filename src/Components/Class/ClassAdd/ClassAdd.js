@@ -29,8 +29,17 @@ const ClassAdd = () => {
             .then(result => {
                 if (result.success) {
                     const imgUrl = result.data.display_url;
-                    const { ClassName, InstructorName, Price, InstructorEmail, AvailableSeats, Rating } = data;
-                    const AddClass = { ClassName, InstructorName, Price: parseFloat(Price), Rating: parseFloat(Rating), InstructorEmail, AvailableSeats: parseFloat(AvailableSeats), ClassImage: imgUrl }
+                    const { ClassName, status, InstructorName, Price, InstructorEmail, AvailableSeats, Rating } = data;
+                    const AddClass = {
+                        ClassName,
+                        status: status,
+                        InstructorName:User.displayName,
+                        InstructorEmail:User.email,                        
+                        Price: parseFloat(Price),
+                        Rating: parseFloat(Rating),
+                        AvailableSeats: parseFloat(AvailableSeats),
+                        ClassImage: imgUrl
+                    }
                     console.log(AddClass)
                     axiosSecure.post('/newClassAdd', AddClass)
                         .then(data => {
@@ -167,6 +176,20 @@ const ClassAdd = () => {
                             placeholder="Enter your Toy name"
                             className="input input-bordered input-error w-full mb-2"
                             required
+                        />
+                    </div>
+
+
+                    <div>
+                        <label className="label">
+                            <span className="text-center justify-center">status approved to admin</span>
+                        </label>
+                        <input
+                            max={5}
+                            min={0}
+                            {...register('status')}
+                            className="input input-bordered input-error w-full mb-2"
+                            value='pending'
                         />
                     </div>
 
