@@ -130,8 +130,7 @@ const StudentCart = () => {
                                     </th>
                                     <th>
                                         <Link to={`/DashBoard/payment/${student._id}`}>
-                                            <button
-                                                // onClick={() => handelCardRemove(student)}
+                                            <button                                               
                                                 className="btn btn-outline btn-secondary">
                                                 <MdOutlinePayment />
                                             </button>

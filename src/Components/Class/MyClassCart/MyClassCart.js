@@ -27,6 +27,7 @@ const MyClassCart = ({ cartClass }) => {
                 cartItemId: _id,
                 InstructorName,
                 ClassName,
+                AvailableSeats,
                 userEmail: User.email,
                 userName: User.displayName,                
                 ClassImage,

@@ -6,7 +6,7 @@ import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 
 
 const CheckOutStudentPayment = ({ selects, price: payPrice }) => {
-    // console.log(selects);
+    console.log(selects);
     const stripe = useStripe();
     const elements = useElements();
     const { User } = UseAuth();
@@ -45,7 +45,7 @@ const CheckOutStudentPayment = ({ selects, price: payPrice }) => {
         setProcessing(true);
 
 
-        const { error,  } = await stripe.createPaymentMethod({
+        const { error, } = await stripe.createPaymentMethod({
             type: "card",
             card,
         });
@@ -82,19 +82,21 @@ const CheckOutStudentPayment = ({ selects, price: payPrice }) => {
         if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id);
             // save payment information to the server
+
             const payment = {
                 email: User?.email,
                 transactionId: paymentIntent.id,
-                price: payPrice,
-                date: new Date(),                
-                set: selects?.map(item => Number(item?.seats)),
-                addItems: selects?.map(item => item?._id),
-                InstructorEmail: selects?.map(item => item?.InstructorEmail),
-                selectedItems: selects?.map(item => item?.cartItemId),               
-                status: 'pending',
+                payPrice,
+                date: new Date(),
                 classImg: selects?.map(item => item?.ClassImage),
+                InstructorEmail: selects?.map(item => item?.InstructorEmail),
+                classNames: selects?.map(item => item?.ClassName),
+                status: 'pending',
                 instructorNames: selects?.map(item => item?.InstructorName),
-                classNames: selects?.map(item => item?.ClassName)
+                AvailableSeats: selects?.map(item => item?.AvailableSeats),
+                addItems: selects?.map(item => item?._id),
+                quantity: selects.length,
+                selectedItems: selects?.map(item => item?.cartItemId),
             };
 
 

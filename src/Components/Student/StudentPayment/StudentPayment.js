@@ -13,7 +13,8 @@ import StudentPay from "./StudentPay";
 const StudentPayment = () => {
 
     const { id } = useParams()
-    const [selects] = StudentData()
+    const [selects] = StudentData();
+    console.log(selects);
     const [paymentData, setPaymentData] = useState([])
 
     useEffect(() => {
@@ -21,7 +22,7 @@ const StudentPayment = () => {
             const payData = selects?.filter(data => data?._id === id)
             setPaymentData(payData);
         }
-    }, [selects, id])
+    }, [selects, id]);
 
 
     return (
@@ -29,7 +30,8 @@ const StudentPayment = () => {
             <h3 className="text-3xl font-semibold">Payment GateWay Management system by user</h3>
             {paymentData?.map(p =>
                 <StudentPay
-                    key={p._id} p={p}
+                    key={p._id}
+                    p={p}
                 ></StudentPay>)
 
             }

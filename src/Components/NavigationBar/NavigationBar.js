@@ -55,7 +55,7 @@ const NavigationBar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/myclass'>Class</Link></li>
         <li><Link to='/Instructor'>Instructor</Link></li>
-        <li><Link to='/blog'>blog</Link></li>
+        {User && <li className='font-bold'> <Link to='DashBoard'>DashBoard</Link></li>}
 
     </>
 
@@ -91,7 +91,7 @@ const NavigationBar = () => {
         )
         }
 
-        {User && <li className='text-black font-bold text-2xl mt-2'> <Link to='DashBoard'>DashBoard</Link></li>}
+
         {User && <li className='mt-2'>{User?.displayName}</li>}
         {User && <li className='mt-2'> {User.email}</li>}
 

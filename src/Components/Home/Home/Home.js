@@ -12,12 +12,12 @@ const Home = () => {
                 <title>common || Home</title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
-            <div className='w-fit'>
-                <SliderSection></SliderSection>
-            </div>
-            <div className='mt-5 mb-5'>
-                <PopularClasses></PopularClasses>
-            </div>
+
+            <SliderSection></SliderSection>
+
+
+            <PopularClasses></PopularClasses>
+
             <div className='mt-5 mb-5'>
                 <PopularInstructors></PopularInstructors>
             </div>
