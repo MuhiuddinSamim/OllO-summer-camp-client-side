@@ -38,7 +38,7 @@ const TotalPayments = () => {
             confirmButtonText: 'Yes'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/payments/Approve/${payments._id}`, {
+                fetch(`https://assignment-12-server-tawny.vercel.app/payments/Approve/${payments._id}`, {
                     method: 'PATCH',
                 })
                     .then((response) => response.json())
@@ -85,7 +85,7 @@ const TotalPayments = () => {
             showCancelButton: true,
             confirmButtonText: 'Submit',
             preConfirm: (inputValue) => {
-                return fetch(`http://localhost:5000/payments/Deny/${payments._id}`, {
+                return fetch(`https://assignment-12-server-tawny.vercel.app/payments/Deny/${payments._id}`, {
                     method: 'POST',
                     body: JSON.stringify({ feedback: inputValue }),
                     headers: {
@@ -112,7 +112,7 @@ const TotalPayments = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/payments/Deny/${payments._id}`, {
+                    fetch(`https://assignment-12-server-tawny.vercel.app/payments/Deny/${payments._id}`, {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json',
@@ -221,15 +221,15 @@ const TotalPayments = () => {
                                 <th>
                                     {payments.status === 'Deny ' ? 'Deny' :
                                         <button
-                                             onClick={() => handelPaymentDeny(payments)}
+                                            onClick={() => handelPaymentDeny(payments)}
                                             className="btn btn-outline btn-secondary btn-sm">
                                             Deny
                                         </button>
                                     }
 
                                 </th>
-                              
-                               
+
+
                             </tr>
                         )}
 

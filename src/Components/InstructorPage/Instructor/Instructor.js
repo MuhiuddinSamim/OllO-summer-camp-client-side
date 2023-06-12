@@ -40,7 +40,7 @@ const Instructor = () => {
         })
             .then(result => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/InstructorData/${Instructor._id}`, {
+                    fetch(`https://assignment-12-server-tawny.vercel.app/InstructorData/${Instructor._id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())

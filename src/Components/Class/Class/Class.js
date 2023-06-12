@@ -36,7 +36,7 @@ const Class = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then(result => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/ClassData/${classItem._id}`, {
+                fetch(`https://assignment-12-server-tawny.vercel.app/ClassData/${classItem._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

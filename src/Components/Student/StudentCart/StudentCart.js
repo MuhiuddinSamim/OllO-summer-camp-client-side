@@ -42,7 +42,7 @@ const StudentCart = () => {
         })
             .then(result => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/CartStudent/${student._id}`, {
+                    fetch(`https://assignment-12-server-tawny.vercel.app/CartStudent/${student._id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
@@ -103,9 +103,9 @@ const StudentCart = () => {
                         </thead>
                         <tbody>
 
-                  {students.map((student, index) =>
-                         <tr
-                           key={student._id}
+                            {students.map((student, index) =>
+                                <tr
+                                    key={student._id}
                                     student={student}
                                 >
                                     <th>{index + 1}</th>
@@ -130,7 +130,7 @@ const StudentCart = () => {
                                     </th>
                                     <th>
                                         <Link to={`/DashBoard/payment/${student._id}`}>
-                                            <button                                               
+                                            <button
                                                 className="btn btn-outline btn-secondary">
                                                 <MdOutlinePayment />
                                             </button>

@@ -52,22 +52,16 @@ const DashBoard = () => {
 
 
 
-    // samimhossain@gmail.comA
-    // const isAdmin =true;
+    
     const [isAdmin] = UseAdmin();
 
 
-    // const isInstructor = false;
-    // instructor@gmail.comA
+    
     const [isInstructor] = UseInstructor();
 
 
 
-    // student@gmail.comA
-    // studenttest@gmail.comA
-
-    // const [Student] = UseClassCart();
-    // console.log(Student)
+    
 
 
     const [Student] = UseClassCart();

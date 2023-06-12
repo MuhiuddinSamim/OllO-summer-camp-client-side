@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet-async';
 
 const Users = () => {
     const { data: users = [], refetch } = useQuery('users', async () => {
-        const res = await fetch('http://localhost:5000/users');
+        const res = await fetch('https://assignment-12-server-tawny.vercel.app/users');
         return res.json();
     });
 
@@ -26,7 +26,7 @@ const Users = () => {
             confirmButtonText: 'Yes, update it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/admin/${user._id}`, {
+                fetch(`https://assignment-12-server-tawny.vercel.app/users/admin/${user._id}`, {
                     method: 'PATCH',
                 })
                     .then((response) => response.json())
@@ -66,7 +66,7 @@ const Users = () => {
             confirmButtonText: 'Yes'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+                fetch(`https://assignment-12-server-tawny.vercel.app/users/instructor/${user._id}`, {
                     method: 'PATCH',
                 })
                     .then((response) => response.json())
@@ -109,7 +109,7 @@ const Users = () => {
         })
             .then(result => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/users/${user._id}`, {
+                    fetch(`https://assignment-12-server-tawny.vercel.app/users/${user._id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
@@ -137,8 +137,8 @@ const Users = () => {
 
     return (
 
-        <>            
-           
+        <>
+
             <div className='w-full'>
                 <div className="overflow-x-auto">
                     <table className="table">

@@ -37,7 +37,7 @@ const AdminStatus = () => {
             confirmButtonText: 'Yes'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/AdminStatus/Approve/${Status._id}`, {
+                fetch(`https://assignment-12-server-tawny.vercel.app/AdminStatus/Approve/${Status._id}`, {
                     method: 'PATCH',
                 })
                     .then((response) => response.json())
@@ -84,7 +84,7 @@ const AdminStatus = () => {
             showCancelButton: true,
             confirmButtonText: 'Submit',
             preConfirm: (inputValue) => {
-                return fetch(`http://localhost:5000/AdminStatus/Deny/${payments._id}`, {
+                return fetch(`https://assignment-12-server-tawny.vercel.app/AdminStatus/Deny/${payments._id}`, {
                     method: 'POST',
                     body: JSON.stringify({ feedback: inputValue }),
                     headers: {
@@ -111,7 +111,7 @@ const AdminStatus = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/AdminStatus/Deny/${payments._id}`, {
+                    fetch(`https://assignment-12-server-tawny.vercel.app/AdminStatus/Deny/${payments._id}`, {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json',

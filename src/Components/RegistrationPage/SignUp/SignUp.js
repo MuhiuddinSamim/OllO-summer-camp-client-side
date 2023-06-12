@@ -23,14 +23,14 @@ const SignUp = () => {
         if (data.password === data.confirmPassword) {
             CreateNewUser(data.email, data.password)
                 .then((result) => {
-                    const createdUser = result.user;                   
+                    const createdUser = result.user;
                     console.log(createdUser);
-                  
+
                     NewUserProfileUpdate(data.name, data.photoURL)
                         .then(() => {
                             const sendUserData = { name: data.name, email: data.email };
 
-                            fetch('http://localhost:5000/users', {
+                            fetch('https://assignment-12-server-tawny.vercel.app/users', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ const SignUp = () => {
 
     return (
         <>
-             <Helmet>
+            <Helmet>
                 <title>SignUp || Dance School </title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>

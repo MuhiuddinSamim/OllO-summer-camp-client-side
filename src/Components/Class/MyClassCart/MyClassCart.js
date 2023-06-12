@@ -13,7 +13,7 @@ const MyClassCart = ({ cartClass }) => {
     const { User } = UseAuth();
     const navigate = useNavigate();
     const location = useLocation();
-    
+
 
     const { InstructorName, ClassName, ClassImage, Price, AvailableSeats } = cartClass;
 
@@ -29,12 +29,12 @@ const MyClassCart = ({ cartClass }) => {
                 ClassName,
                 AvailableSeats,
                 userEmail: User.email,
-                userName: User.displayName,                
+                userName: User.displayName,
                 ClassImage,
                 Price,
             };
 
-            fetch('http://localhost:5000/student', {
+            fetch('https://assignment-12-server-tawny.vercel.app/student', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

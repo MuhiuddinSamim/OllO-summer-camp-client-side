@@ -49,7 +49,7 @@ const AuthProvider = ({ children }) => {
                 const LoggedGoogleUser = result.user;
                 const sendUserData = { name: LoggedGoogleUser.displayName, email: LoggedGoogleUser.email };
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://assignment-12-server-tawny.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -128,8 +128,8 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, CurrentUser => {
             setUser(CurrentUser);
             if (CurrentUser) {
-                axios.post('http://localhost:5000/jwt', { email: CurrentUser.email })
-                    .then(data => {                       
+                axios.post('https://assignment-12-server-tawny.vercel.app/jwt', { email: CurrentUser.email })
+                    .then(data => {
                         localStorage.setItem('access-token', data.data.token);
                         setLoading(false);
                     })
